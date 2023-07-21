@@ -1,4 +1,4 @@
-namespace FragranceHub.Web.Models
+namespace FragranceHub.Web.ViewModels.Home
 {
     public class ErrorViewModel
     {
