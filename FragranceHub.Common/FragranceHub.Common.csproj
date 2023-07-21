@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FragranceHub.Web.ViewModels\FragranceHub.Web.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>
