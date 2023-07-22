@@ -30,7 +30,7 @@ namespace FragranceHub.Data.Models
         [MaxLength(ImageUrlMaxLength)]
         public string ImageUrl { get; set; } = null!;
 
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public virtual Category Category { get; set; } = null!;
 
         public Guid UserId { get; set; }

@@ -98,9 +98,11 @@ namespace FragranceHub.Data.Migrations
 
             modelBuilder.Entity("FragranceHub.Data.Models.Category", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -118,8 +120,8 @@ namespace FragranceHub.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -202,6 +204,9 @@ namespace FragranceHub.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("ApplicationUserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("FragranceId")
                         .HasColumnType("uniqueidentifier");
 
@@ -212,6 +217,8 @@ namespace FragranceHub.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("FragranceId");
 
@@ -415,16 +422,20 @@ namespace FragranceHub.Data.Migrations
 
             modelBuilder.Entity("FragranceHub.Data.Models.ShoppingCartItem", b =>
                 {
+                    b.HasOne("FragranceHub.Data.Models.ApplicationUser", null)
+                        .WithMany("ShoppingCartItems")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("FragranceHub.Data.Models.Fragrance", "Fragrance")
                         .WithMany()
                         .HasForeignKey("FragranceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FragranceHub.Data.Models.ApplicationUser", "User")
-                        .WithMany("ShoppingCartItems")
+                        .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Fragrance");

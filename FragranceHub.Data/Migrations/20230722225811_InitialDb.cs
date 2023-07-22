@@ -1,8 +1,11 @@
-﻿namespace FragranceHub.Data.Migrations
-{
-    using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-    public partial class InitializeDb : Migration
+#nullable disable
+
+namespace FragranceHub.Data.Migrations
+{
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,7 +54,8 @@
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -192,7 +196,7 @@
                     Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: false),
-                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsApproved = table.Column<bool>(type: "bit", nullable: false),
                     WishlistId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
@@ -255,23 +259,29 @@
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FragranceId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    ApplicationUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ShoppingCartItems", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_ShoppingCartItems_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_ShoppingCartItems_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ShoppingCartItems_Fragrances_FragranceId",
                         column: x => x.FragranceId,
                         principalTable: "Fragrances",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -337,6 +347,11 @@
                 name: "IX_Reviews_UserId",
                 table: "Reviews",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShoppingCartItems_ApplicationUserId",
+                table: "ShoppingCartItems",
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ShoppingCartItems_FragranceId",
