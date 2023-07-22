@@ -19,8 +19,6 @@
             public const string PriceMinValue = "0";
             public const string PriceMaxValue = "2000";
 
-            public const int ConnectionMaxValue = 50;
-
 
 
         }
