@@ -12,11 +12,6 @@ namespace FragranceHub.Data.Models
         }
 
 
-        public string FirstName { get; set; } = null!;
-
-        public string LastName { get; set; } = null!;
-
-
         public virtual ICollection<Fragrance> OwnedFragrances { get; set; }
 
         public virtual ICollection<Review> PostedReviews { get; set; }
