@@ -9,6 +9,7 @@
         {
             Fragrances = new HashSet<Fragrance>();
         }
+
         [Key]
         public int Id { get; set; }
 
