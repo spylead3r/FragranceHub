@@ -4,6 +4,7 @@ using FragranceHub.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FragranceHub.Data.Migrations
 {
     [DbContext(typeof(FragranceHubDbContext))]
-    partial class FragranceHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230723155915_MakingUserIdNullable")]
+    partial class MakingUserIdNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,7 +174,7 @@ namespace FragranceHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("03d11678-c3dc-4bc9-9c6e-c45f9294a4fc"),
+                            Id = new Guid("e322f726-c43f-4c92-a70e-9147a31a66f6"),
                             CategoryId = 1,
                             Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
                             ImageUrl = "https://i.makeup.bg/r/rv/rvuuikzs9nz6.jpg",

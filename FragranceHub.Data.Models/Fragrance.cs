@@ -33,7 +33,7 @@ namespace FragranceHub.Data.Models
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; } = null!;
 
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
         
         public virtual ApplicationUser? User { get; set; }
 
