@@ -11,11 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{1B8CFF84-799
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{5807D87C-2035-4697-AF5A-20B718F9B068}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceHub.Data", "FragranceHub.Data\FragranceHub.Data.csproj", "{1B06FD53-41BE-4659-A713-E06FC37D17FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FragranceHub.Data", "FragranceHub.Data\FragranceHub.Data.csproj", "{1B06FD53-41BE-4659-A713-E06FC37D17FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceHub.Data.Models", "FragranceHub.Data.Models\FragranceHub.Data.Models.csproj", "{8544EF5B-5086-4514-BD91-A5B409636A7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FragranceHub.Data.Models", "FragranceHub.Data.Models\FragranceHub.Data.Models.csproj", "{8544EF5B-5086-4514-BD91-A5B409636A7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceHub.Web.ViewModels", "FragranceHub.Web.ViewModels\FragranceHub.Web.ViewModels.csproj", "{FFFA8833-042A-480D-96A2-ECD55B342BD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FragranceHub.Web.ViewModels", "FragranceHub.Web.ViewModels\FragranceHub.Web.ViewModels.csproj", "{FFFA8833-042A-480D-96A2-ECD55B342BD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{4940C3DF-56DF-42A7-975D-58FCCD94276F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceHub.Services.Data", "FragranceHub.Services.Data\FragranceHub.Services.Data.csproj", "{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{FFFA8833-042A-480D-96A2-ECD55B342BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFFA8833-042A-480D-96A2-ECD55B342BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFFA8833-042A-480D-96A2-ECD55B342BD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +60,7 @@ Global
 		{1B06FD53-41BE-4659-A713-E06FC37D17FD} = {5807D87C-2035-4697-AF5A-20B718F9B068}
 		{8544EF5B-5086-4514-BD91-A5B409636A7B} = {5807D87C-2035-4697-AF5A-20B718F9B068}
 		{FFFA8833-042A-480D-96A2-ECD55B342BD4} = {1B8CFF84-799E-43C6-92C0-0EE0C0A61060}
+		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9} = {4940C3DF-56DF-42A7-975D-58FCCD94276F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2AD140DA-08DC-4120-AFED-EF4DDA90FDF3}

@@ -9,6 +9,10 @@ namespace FragranceHub.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Fragrance> builder)
         {
+            builder
+                .Property(h => h.PublishedOn)
+                .HasDefaultValue(DateTime.UtcNow);
+
             builder.HasKey(f => f.Id);
 
             builder.HasOne(f => f.Category)
