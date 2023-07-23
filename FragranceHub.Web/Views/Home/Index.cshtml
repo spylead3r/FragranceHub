@@ -3,23 +3,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fragrance Shop - Index</title>
+    <title>Fragrance Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-s3r//gGbVFLmCCEf9/l4Tp+o6H5TmoBs+nlghIdb8+U24NJphx3LR7IpzH9B3zScFc0dMi9ufc5L7bA40WhrA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Add your CSS styles here */
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Fragrance list styles */
+        .fragrance-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .fragrance-item {
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+            .fragrance-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .fragrance-item img {
+                max-width: 150px;
+                height: auto;
+                display: block;
+                margin: 0 auto 15px;
+                border-radius: 10px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .fragrance-item h3 {
+                margin: 0;
+                font-size: 24px;
+                color: #333;
+            }
+
+            .fragrance-item p {
+                margin: 10px 0;
+                font-size: 16px;
+                color: #777;
+            }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .footer-icon {
+            margin-right: 10px;
+            font-size: 24px;
+            color: #fff;
+            transition: transform 0.2s ease;
+        }
+
+            .footer-icon:hover {
+                transform: scale(1.2);
+            }
+
+        .footer-text {
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <h1>Fragrance Shop</h1>
+    <header>
+        <h1>Fragrance Shop</h1>
+    </header>
+
     <div class="fragrance-list">
         @foreach (var fragrance in Model)
         {
             <div class="fragrance-item">
                 <img src="@fragrance.ImageUrl" alt="@fragrance.Name" />
                 <h3>@fragrance.Name</h3>
-                <p>@fragrance.Id</p>
+                <p>@Html.Raw("AVAILABLE")</p>
             </div>
         }
     </div>
+
+    <footer>
+        <p>
+            <a href="#" class="footer-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="footer-icon"><i class="fab fa-instagram"></i></a>
+            Follow us for the latest updates!
+        </p>
+        <p class="footer-text">© 2023 Fragrance Shop. All rights reserved.</p>
+    </footer>
+
+    <!-- Font Awesome icons - You can use this CDN link or download and use the files locally -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-0o2wp6gqYiZmpHlN3Pe0f9nKQ2vQKhaGjW9elgCpEI6/GdHHlPckWfu6qMd2zDx4pD9pIueipPwrOp5oLo1Uw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
-
