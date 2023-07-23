@@ -1,6 +1,6 @@
 ﻿namespace FragranceHub.Web.Controllers
 {
-
+    using FragranceHub.Services.Data.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
 
@@ -8,15 +8,18 @@
 
     public class HomeController : Controller
     {
+        private readonly IFragranceService fragranceService;
 
-        public HomeController()
+        public HomeController(IFragranceService fragranceService)
         {
-
+            this.fragranceService = fragranceService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            IEnumerable<IndexViewModel> viewModel = await this.fragranceService.LastThreeFragrancesAsync();
+
+            return View(viewModel);
         }
 
 

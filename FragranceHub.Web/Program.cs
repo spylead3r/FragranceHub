@@ -5,6 +5,8 @@ namespace FragranceHub.Web
 
     using Data;
     using FragranceHub.Data.Models;
+    using FragranceHub.Web.Infrastructure.Extensions;
+    using FragranceHub.Services.Data.Interfaces;
 
     public class Program
     {
@@ -28,6 +30,8 @@ namespace FragranceHub.Web
 
             })        
                 .AddEntityFrameworkStores<FragranceHubDbContext>();
+
+            builder.Services.AddApplicationServices(typeof(IFragranceService));
 
             builder.Services.AddControllersWithViews();
 

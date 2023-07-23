@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{49
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceHub.Services.Data", "FragranceHub.Services.Data\FragranceHub.Services.Data.csproj", "{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceHub.Web.Infrastructure", "FragranceHub.Web.Infrastructure\FragranceHub.Web.Infrastructure.csproj", "{594C793A-4653-4F92-B4F4-2A11C671C141}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594C793A-4653-4F92-B4F4-2A11C671C141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594C793A-4653-4F92-B4F4-2A11C671C141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594C793A-4653-4F92-B4F4-2A11C671C141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594C793A-4653-4F92-B4F4-2A11C671C141}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{8544EF5B-5086-4514-BD91-A5B409636A7B} = {5807D87C-2035-4697-AF5A-20B718F9B068}
 		{FFFA8833-042A-480D-96A2-ECD55B342BD4} = {1B8CFF84-799E-43C6-92C0-0EE0C0A61060}
 		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9} = {4940C3DF-56DF-42A7-975D-58FCCD94276F}
+		{594C793A-4653-4F92-B4F4-2A11C671C141} = {1B8CFF84-799E-43C6-92C0-0EE0C0A61060}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2AD140DA-08DC-4120-AFED-EF4DDA90FDF3}

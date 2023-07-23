@@ -1,1 +1,25 @@
-﻿
+﻿@model IEnumerable<IndexViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fragrance Shop - Index</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Fragrance Shop</h1>
+    <div class="fragrance-list">
+        @foreach (var fragrance in Model)
+        {
+            <div class="fragrance-item">
+                <img src="@fragrance.ImageUrl" alt="@fragrance.Name" />
+                <h3>@fragrance.Name</h3>
+                <p>@fragrance.Id</p>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
