@@ -19,9 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FragranceHub.Web.ViewModels
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{4940C3DF-56DF-42A7-975D-58FCCD94276F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceHub.Services.Data", "FragranceHub.Services.Data\FragranceHub.Services.Data.csproj", "{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FragranceHub.Services.Data", "FragranceHub.Services.Data\FragranceHub.Services.Data.csproj", "{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceHub.Web.Infrastructure", "FragranceHub.Web.Infrastructure\FragranceHub.Web.Infrastructure.csproj", "{594C793A-4653-4F92-B4F4-2A11C671C141}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FragranceHub.Web.Infrastructure", "FragranceHub.Web.Infrastructure\FragranceHub.Web.Infrastructure.csproj", "{594C793A-4653-4F92-B4F4-2A11C671C141}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +66,7 @@ Global
 		{1B06FD53-41BE-4659-A713-E06FC37D17FD} = {5807D87C-2035-4697-AF5A-20B718F9B068}
 		{8544EF5B-5086-4514-BD91-A5B409636A7B} = {5807D87C-2035-4697-AF5A-20B718F9B068}
 		{FFFA8833-042A-480D-96A2-ECD55B342BD4} = {1B8CFF84-799E-43C6-92C0-0EE0C0A61060}
+		{4940C3DF-56DF-42A7-975D-58FCCD94276F} = {1B8CFF84-799E-43C6-92C0-0EE0C0A61060}
 		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9} = {4940C3DF-56DF-42A7-975D-58FCCD94276F}
 		{594C793A-4653-4F92-B4F4-2A11C671C141} = {1B8CFF84-799E-43C6-92C0-0EE0C0A61060}
 	EndGlobalSection
