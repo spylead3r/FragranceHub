@@ -25,6 +25,7 @@
     <ProjectReference Include="..\FragranceHub.Common\FragranceHub.Common.csproj" />
     <ProjectReference Include="..\FragranceHub.Data.Models\FragranceHub.Data.Models.csproj" />
     <ProjectReference Include="..\FragranceHub.Data\FragranceHub.Data.csproj" />
+    <ProjectReference Include="..\FragranceHub.Services.Data.Models\FragranceHub.Services.Data.Models.csproj" />
     <ProjectReference Include="..\FragranceHub.Services.Data\FragranceHub.Services.Data.csproj" />
     <ProjectReference Include="..\FragranceHub.Web.Infrastructure\FragranceHub.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\FragranceHub.Web.ViewModels\FragranceHub.Web.ViewModels.csproj" />

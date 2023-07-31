@@ -13,8 +13,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\FragranceHub.Web.ViewModels\FragranceHub.Web.ViewModels.csproj" />
-  </ItemGroup>
-
 </Project>

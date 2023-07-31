@@ -4,6 +4,7 @@ using FragranceHub.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FragranceHub.Data.Migrations
 {
     [DbContext(typeof(FragranceHubDbContext))]
-    partial class FragranceHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230730185359_AddKeyAttribute")]
+    partial class AddKeyAttribute
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

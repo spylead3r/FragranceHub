@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FragranceHub.Services.Data"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FragranceHub.Web.Infrastructure", "FragranceHub.Web.Infrastructure\FragranceHub.Web.Infrastructure.csproj", "{594C793A-4653-4F92-B4F4-2A11C671C141}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FragranceHub.Services.Data.Models", "FragranceHub.Services.Data.Models\FragranceHub.Services.Data.Models.csproj", "{381C2A38-1015-4C25-8651-A947DC147060}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{594C793A-4653-4F92-B4F4-2A11C671C141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{594C793A-4653-4F92-B4F4-2A11C671C141}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{594C793A-4653-4F92-B4F4-2A11C671C141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{381C2A38-1015-4C25-8651-A947DC147060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{381C2A38-1015-4C25-8651-A947DC147060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{381C2A38-1015-4C25-8651-A947DC147060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{381C2A38-1015-4C25-8651-A947DC147060}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{4940C3DF-56DF-42A7-975D-58FCCD94276F} = {1B8CFF84-799E-43C6-92C0-0EE0C0A61060}
 		{4F39D40B-DCF9-4684-B4D0-8902DDF49EB9} = {4940C3DF-56DF-42A7-975D-58FCCD94276F}
 		{594C793A-4653-4F92-B4F4-2A11C671C141} = {1B8CFF84-799E-43C6-92C0-0EE0C0A61060}
+		{381C2A38-1015-4C25-8651-A947DC147060} = {4940C3DF-56DF-42A7-975D-58FCCD94276F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2AD140DA-08DC-4120-AFED-EF4DDA90FDF3}

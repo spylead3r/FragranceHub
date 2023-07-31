@@ -1,4 +1,6 @@
-﻿namespace FragranceHub.Data.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FragranceHub.Data.Models
 {
     public class Wishlist
     {
@@ -6,6 +8,8 @@
         {
             this.Fragrances = new List<Fragrance>();
         }
+
+        [Key]
         public Guid Id { get; set; }
 
         public Guid UserId { get; set; }

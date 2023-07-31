@@ -17,9 +17,7 @@
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<IndexViewModel> viewModel = await this.fragranceService.LastThreeFragrancesAsync();
-
-            return View(viewModel);
+            return View();
         }
 
 
