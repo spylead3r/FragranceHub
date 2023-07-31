@@ -99,9 +99,18 @@
     <h2 class="text-center">No fragrances found by the given criteria!</h2>
 }
 
-@*<div class="row">
-    @foreach (var fragranceAll in Model.Fragrances)
+<div class="row">
+    @foreach (var fragrance in Model.Fragrances)
     {
-        <partial name="_FragrancePartial" model="@fragranceAll" />
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="@fragrance.ImageUrl" class="card-img-top" alt="@fragrance.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@fragrance.Name</h5>
+                    <p class="card-text"> @Html.Raw($"{fragrance.Price}$") </p>
+                </div>
+            </div>
+        </div>
     }
-</div>*@
+</div>
+
