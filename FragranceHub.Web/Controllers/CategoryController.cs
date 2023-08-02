@@ -15,7 +15,7 @@ namespace FragranceHub.Web.Controllers
         public async Task<IActionResult> Men()
         {
             IEnumerable<FragranceByCategoryForm> viewModel =
-                await this.categoryService.GetMenFragrances();
+                await this.categoryService.GetMenFragrancesAsync();
 
             return View(viewModel);
         }
@@ -23,7 +23,7 @@ namespace FragranceHub.Web.Controllers
         public async Task<IActionResult> Women()
         {
             IEnumerable<FragranceByCategoryForm> viewModel =
-               await this.categoryService.GetWomenFragrances();
+               await this.categoryService.GetWomenFragrancesAsync();
 
             return View(viewModel);
 
@@ -32,7 +32,7 @@ namespace FragranceHub.Web.Controllers
         public async Task<IActionResult> Unisex()
         {
             IEnumerable<FragranceByCategoryForm> viewModel =
-              await this.categoryService.GetUnisexFragrances();
+              await this.categoryService.GetUnisexFragrancesAsync();
 
             return View(viewModel);
         }

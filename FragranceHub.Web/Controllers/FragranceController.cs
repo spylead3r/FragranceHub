@@ -3,6 +3,7 @@ using FragranceHub.Services.Data.Models.Fragrance;
 using FragranceHub.Web.ViewModels.Fragrance;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 
 namespace FragranceHub.Web.Controllers
 {
@@ -36,8 +37,47 @@ namespace FragranceHub.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
+            FragranceFormModel formModel = new FragranceFormModel()
+            {
+                Categories = await this.categoryService.AllCategoriesAsync()
+            };
 
-            return this.View();
+            return this.View(formModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(FragranceFormModel model)
+        {
+            bool categoryExists = await
+                this.categoryService.ExistsByIdAsync(model.CategoryId);
+
+            if (!categoryExists)
+            {
+                ModelState.AddModelError(nameof(model.CategoryId), "Selected category does not exist!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                model.Categories = await this.categoryService.AllCategoriesAsync();
+
+
+                return this.View(model);
+            }
+
+            try
+            {
+                
+               await this.fragranceService.CreateAsync(model);
+            }
+            catch (Exception)
+            {
+                this.ModelState.AddModelError(String.Empty, "Unexpected error occured while trying to add fragrance!");
+                model.Categories = await this.categoryService.AllCategoriesAsync();
+
+                return this.View(model); 
+            }
+
+            return this.RedirectToAction("All", "Fragrance");
         }
     }
 }

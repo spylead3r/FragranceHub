@@ -7,11 +7,15 @@ namespace FragranceHub.Services.Data.Interfaces
     {
         Task<IEnumerable<string>> AllCategoryNamesAsync();
 
-        Task<IEnumerable<FragranceByCategoryForm>> GetMenFragrances();
+        Task<IEnumerable<FragranceSelectCategoryFormModel>> AllCategoriesAsync();
 
-        Task<IEnumerable<FragranceByCategoryForm>> GetWomenFragrances();
+        Task<bool> ExistsByIdAsync(int id);
 
-        Task<IEnumerable<FragranceByCategoryForm>> GetUnisexFragrances();
+        Task<IEnumerable<FragranceByCategoryForm>> GetMenFragrancesAsync();
+
+        Task<IEnumerable<FragranceByCategoryForm>> GetWomenFragrancesAsync();
+
+        Task<IEnumerable<FragranceByCategoryForm>> GetUnisexFragrancesAsync();
 
 
     }

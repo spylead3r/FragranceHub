@@ -1,0 +1,40 @@
+﻿@model FragranceHub.Web.ViewModels.Fragrance.FragranceFormModel
+
+@{
+    ViewData["Title"] = "Add Fragrance";
+}
+
+<h2>Add Fragrance</h2>
+
+<form asp-controller="Fragrance" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl">Image Link</label>
+        <input asp-for="ImageUrl" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId" class="form-control">
+            <option value="">-- Select a category --</option>
+            @foreach (var category in Model.Categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary mt-3" type="submit" value="Save" />
+    </div>
+</form>

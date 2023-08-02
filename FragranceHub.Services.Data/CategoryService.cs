@@ -10,7 +10,6 @@ namespace FragranceHub.Services.Data
     {
         private readonly FragranceHubDbContext dbContext;
 
-
         public CategoryService(FragranceHubDbContext dbContext)
         {
             this.dbContext = dbContext;       
@@ -25,7 +24,22 @@ namespace FragranceHub.Services.Data
             return allNames;
         }
 
-        public async Task<IEnumerable<FragranceByCategoryForm>> GetMenFragrances()
+        public async Task<IEnumerable<FragranceSelectCategoryFormModel>> AllCategoriesAsync()
+        {
+            IEnumerable<FragranceSelectCategoryFormModel> allCategories = await dbContext
+                .Categories
+                .AsNoTracking()
+                .Select(c => new FragranceSelectCategoryFormModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                })
+                .ToArrayAsync();
+
+            return allCategories;
+        }
+
+        public async Task<IEnumerable<FragranceByCategoryForm>> GetMenFragrancesAsync()
         {
             IEnumerable<FragranceByCategoryForm> menFragrances =
                await this.dbContext.Fragrances
@@ -41,7 +55,7 @@ namespace FragranceHub.Services.Data
             return menFragrances;
         }
 
-        public async Task<IEnumerable<FragranceByCategoryForm>> GetWomenFragrances()
+        public async Task<IEnumerable<FragranceByCategoryForm>> GetWomenFragrancesAsync()
         {
             IEnumerable<FragranceByCategoryForm> womenFragrances =
                await this.dbContext.Fragrances
@@ -57,7 +71,7 @@ namespace FragranceHub.Services.Data
             return womenFragrances;
         }
 
-        public async Task<IEnumerable<FragranceByCategoryForm>> GetUnisexFragrances()
+        public async Task<IEnumerable<FragranceByCategoryForm>> GetUnisexFragrancesAsync()
         {
             IEnumerable<FragranceByCategoryForm> unisexFragrances =
                await this.dbContext.Fragrances
@@ -71,6 +85,15 @@ namespace FragranceHub.Services.Data
                 .ToListAsync();
 
             return unisexFragrances;
+        }
+
+        public async Task<bool> ExistsByIdAsync(int id)
+        {
+            bool result = await dbContext
+                .Categories
+                .AnyAsync(c => c.Id == id);
+
+            return result;
         }
     }
 }

@@ -6,7 +6,7 @@
         {
             //Fragrance
             public const int FragranceNameMinLength = 2;
-            public const int FragranceNameMaxLength = 50;
+            public const int FragranceNameMaxLength = 70;
 
             //Description
             public const int DescriptionMinLength = 10;

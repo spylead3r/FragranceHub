@@ -74,5 +74,21 @@ namespace FragranceHub.Services.Data
                 Fragrances = allFragrances
             };
         }
+
+        public async Task CreateAsync(FragranceFormModel formModel)
+        {
+            Fragrance fragrance = new Fragrance()
+            {
+                Name = formModel.Name,
+                ImageUrl = formModel.ImageUrl,
+                Description = formModel.Description,
+                Price = formModel.Price,
+                CategoryId = formModel.CategoryId,
+            };
+
+            
+            await this.dbContext.Fragrances.AddAsync(fragrance);
+            await this.dbContext.SaveChangesAsync();
+        }
     }
 }

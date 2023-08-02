@@ -16,7 +16,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Fragrantica™</a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Fragrantica™</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,35 +53,6 @@
             </div>
         </nav>
 
-
-        @*<nav class="navbar navbar-expand-md navbar-dark bg-opacity-75 fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Fragrantica™</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Fragrance" asp-action="All">All Fragrances</a>
-                        </li>
-                        @if (this.User.Identity?.IsAuthenticated ?? false)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Fragrance" asp-action="Mine">My fragrances</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Fragrance" asp-action="Sell">Sell your fragrance</a>
-                            </li>
-                        }
-                    </ul>
-                    
-                </div>
-            </div>
-
-        </nav>*@
     </header>
     
     <div class="container">
@@ -90,7 +61,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+ @*   <footer class="border-top footer text-muted">
         <div class="container">
             &copy;Fragrantica™ @DateTime.UtcNow.Year
             @if (DateTime.UtcNow.Year != ReleaseYear)
@@ -98,7 +69,7 @@
                 Html.Raw($" - {DateTime.UtcNow.Year}");
             }
         </div>
-    </footer>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
