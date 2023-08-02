@@ -1,115 +1,81 @@
-﻿@model AllFragrancesQueryModel
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-@{
-    ViewBag.Title = "All Fragrances";
-}
+        .flip-card {
+            background-color: transparent;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+        }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
 
-<form method="get">
-    <div class="row">
-        <div class="form-group col-md-3 d-flex justify-content-between">
-            <div class="form-group">
-                <label asp-for="Category"></label>
-                <select asp-for="Category" class="form-control">
-                    <option value="">All</option>
-                    @foreach (var category in Model.Categories)
-                    {
-                        <option value="@category">@category</option>
-                    }
-                </select>
-            </div>
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
 
-            <div class="form-group">
-                <label asp-for="FragrancesPerPage"></label>
-                <select asp-for="FragrancesPerPage" class="form-control">
-                    <option value="3">3</option>
-                    <option value="6">6</option>
-                    <option value="9">9</option>
-                </select>
-            </div>
-        </div>
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
 
-        <div class="form-group col-md-3">
-            <label asp-for="SearchString"></label>
-            <input asp-for="SearchString" class="form-control" placeholder="...">
-        </div>
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+        }
 
-        <div class="form-group col-md-3">
-            <div class="form-group">
-                <label asp-for="FragranceSorting"></label>
-                <select asp-for="FragranceSorting" class="form-control">
-                    <option value="0">Price (Ascending)</option>
-                    <option value="1">Price (Descending)</option>
-                </select>
-            </div>
-        </div>
+        .flip-card-back {
+            background-color: mediumpurple;
+            opacity: 0.3;
+            color: white;
+            transform: rotateY(180deg);
+        }
 
-        <div class="col-md-3">
-            <div class="form-group mt-4 p-2">
-                <input type="submit" value="Search" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-</form>
+        /* If you want to maintain a consistent layout for all cards, you can set a fixed width and height for each card */
+        .fragrance-card {
+            width: 300px;
+            height: 300px;
+            /* Add any other styles you need for each card */
+        }
+    </style>
+</head>
+<body>
 
+    <h1>Fragrance Collection</h1>
+    <h3>Hover over the fragrance image below:</h3>
 
-@{
-    int previousPage = Model.CurrentPage - 1;
-    if (previousPage < 1)
-    {
-        previousPage = 1;
-    }
-
-    int maxPage = (int)Math.Ceiling((double)Model.TotalFragrances /
-        Model.FragrancesPerPage);
-}
-
-<div class="row mb-5">
-    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
-           asp-controller="House"
-           asp-action="All"
-           asp-route-currentPage="@previousPage"
-           asp-route-category="@Model.Category"
-           asp-route-searchTerm="@Model.SearchString"
-           asp-route-sorting="@((int)Model.FragranceSorting)"><<</a>
-    </div>
-
-    @{
-        bool shouldNextPageBeDisabled = Model.CurrentPage == maxPage ||
-        !Model.Fragrances.Any();
-    }
-
-    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-primary
-           @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
-           asp-controller="House"
-           asp-action="All"
-           asp-route-currentPage="@(Model.CurrentPage + 1)"
-           asp-route-category="@Model.Category"
-           asp-route-searchTerm="@Model.SearchString"
-           asp-route-sorting="@((int)Model.FragranceSorting)">>></a>
-    </div>
-</div>
-
-@if (!Model.Fragrances.Any())
-{
-    <h2 class="text-center">No fragrances found by the given criteria!</h2>
-}
-
-<div class="row">
     @foreach (var fragrance in Model.Fragrances)
     {
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="@fragrance.ImageUrl" class="card-img-top" alt="@fragrance.Name">
-                <div class="card-body">
-                    <h5 class="card-title">@fragrance.Name</h5>
-                    <p class="card-text"> @Html.Raw($"{fragrance.Price}$") </p>
+        <div class="flip-card fragrance-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="@fragrance.ImageUrl" alt="@fragrance.Name" style="width:300px;height:300px;">
+                </div>
+                <div class="flip-card-back">
+                    <h1>@fragrance.Name</h1>
+                    <p>Price: @fragrance.Price</p>
+                    <!-- Add any other fragrance details you want to display on the back side of the card -->
                 </div>
             </div>
         </div>
     }
-</div>
+
+</body>
+</html>
