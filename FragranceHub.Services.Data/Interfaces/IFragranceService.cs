@@ -9,5 +9,7 @@ namespace FragranceHub.Services.Data.Interfaces
     public interface IFragranceService
     {
         Task<AllFragrancesFilteredModel> AllFragrancesAsync(AllFragrancesQueryModel model);
+
+        
     }
 }

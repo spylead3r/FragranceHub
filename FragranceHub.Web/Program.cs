@@ -60,7 +60,10 @@ namespace FragranceHub.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.SeedAdministrator(DevelopmentAdminEmail);
+            if (app.Environment.IsDevelopment())
+            {
+                app.SeedAdministrator(DevelopmentAdminEmail);
+            }
 
             app.MapDefaultControllerRoute();
             app.MapRazorPages();

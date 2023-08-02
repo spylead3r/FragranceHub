@@ -13,7 +13,9 @@
             public const int DescriptionMaxLength = 200;
 
             //ImageUrl
+            public const int ImageUrlMinLength = 1;
             public const int ImageUrlMaxLength = 2048;
+
 
             //Price
             public const string PriceMinValue = "0";

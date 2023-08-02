@@ -32,5 +32,12 @@ namespace FragranceHub.Web.Controllers
 
             return this.View(queryModel);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Add()
+        {
+
+            return this.View();
+        }
     }
 }
