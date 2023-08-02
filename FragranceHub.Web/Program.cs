@@ -8,6 +8,8 @@ namespace FragranceHub.Web
     using FragranceHub.Web.Infrastructure.Extensions;
     using FragranceHub.Services.Data.Interfaces;
 
+    using static FragranceHub.Common.GeneralAppConstants;
+
     public class Program
     {
         public static void Main(string[] args)
@@ -28,7 +30,8 @@ namespace FragranceHub.Web
                 options.Password.RequireNonAlphanumeric = builder.Configuration.GetValue<bool>("Identity:SignIn:RequireNonAlphanumeric"); 
                 options.Password.RequiredLength = builder.Configuration.GetValue<int>("Identity:SignIn:RequiredLength");
 
-            })        
+            })     
+                .AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<FragranceHubDbContext>();
 
             builder.Services.AddApplicationServices(typeof(IFragranceService));
@@ -56,6 +59,8 @@ namespace FragranceHub.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.SeedAdministrator(DevelopmentAdminEmail);
 
             app.MapDefaultControllerRoute();
             app.MapRazorPages();

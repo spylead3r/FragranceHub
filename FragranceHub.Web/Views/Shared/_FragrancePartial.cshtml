@@ -1,0 +1,7 @@
+﻿@model FragranceAllViewModel
+
+
+    <div class="fragrance-buttons">
+        <button class="btn btn-primary" onclick="addToCart(@Model.Id)">Add</button>
+        <a class="btn btn-secondary" asp-controller="Fragrance" asp-action="Details" asp-route-id="@Model.Id">Details</a>
+    </div>
