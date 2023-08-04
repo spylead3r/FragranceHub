@@ -1,4 +1,4 @@
-﻿@using static FragranceHub.Common.GeneralAppConstants
+﻿﻿@using static FragranceHub.Common.GeneralAppConstants
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!DOCTYPE html>
@@ -19,12 +19,12 @@
         }
 
     </style>
-        
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            
+
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">Fragrantica™</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -47,15 +47,15 @@
                     </li>
                     @if (User.Identity!.IsAuthenticated)
                     {
-                         <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Wishlist" asp-action="Mine">My Wishlist</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Mine">My Cart</a>
-                        
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Wishlist" asp-action="Mine">My Wishlist</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Mine">My Cart</a>
+
+                        </li>
                     }
-                   
+
                 </ul>
                 <!-- Move the _LoginPartial to the right side -->
                 <partial name="_LoginPartial" class="navbar-nav ml-auto" />
@@ -63,21 +63,21 @@
         </nav>
 
     </header>
-    
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
- @*   <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy;Fragrantica™ @DateTime.UtcNow.Year
-            @if (DateTime.UtcNow.Year != ReleaseYear)
-            {
-                Html.Raw($" - {DateTime.UtcNow.Year}");
-            }
-        </div>
+    @*   <footer class="border-top footer text-muted">
+    <div class="container">
+    &copy;Fragrantica™ @DateTime.UtcNow.Year
+    @if (DateTime.UtcNow.Year != ReleaseYear)
+    {
+    Html.Raw($" - {DateTime.UtcNow.Year}");
+    }
+    </div>
     </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

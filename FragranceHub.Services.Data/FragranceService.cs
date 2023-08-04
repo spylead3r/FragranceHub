@@ -61,7 +61,7 @@ namespace FragranceHub.Services.Data
                     Id = f.Id.ToString(),
                     Name = f.Name,
                     ImageUrl = f.ImageUrl,
-                    Category = f.Category.ToString(),
+                    Category = f.Category.ToString()!,
                     Price = f.Price
                 })
                 .ToArrayAsync();

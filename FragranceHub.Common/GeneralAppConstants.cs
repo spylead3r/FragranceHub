@@ -6,7 +6,7 @@
 
         public const int DefaultPage = 1;
 
-        public const int EntitiesPerPage = 3;
+        public const int EntitiesPerPage = 9;
 
         public const string AdminRoleName = "Administrator";
 

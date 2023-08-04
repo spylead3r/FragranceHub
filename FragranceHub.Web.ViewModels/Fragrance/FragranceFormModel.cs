@@ -26,7 +26,7 @@ namespace FragranceHub.Web.ViewModels.Fragrance
 
         [Required]
         [StringLength(DescriptionMaxLength, MinimumLength = DescriptionMinLength)]
-        public string Description { get; set; }
+        public string Description { get; set; } = null!;
 
         [Display(Name = "Category")]
         public int CategoryId { get; set; }

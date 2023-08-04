@@ -25,7 +25,6 @@ namespace FragranceHub.Web.ViewModels.Fragrance
 
         public int CurrentPage { get; set; }
 
-        [Display(Name = "Show Houses On Page")]
         public int FragrancesPerPage { get; set; }
 
         public int TotalFragrances { get; set; }
