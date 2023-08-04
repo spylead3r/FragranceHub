@@ -2,7 +2,6 @@
 {
     public static class GeneralAppConstants
     {
-        public const int ReleaseYear = 2023;
 
         public const int DefaultPage = 1;
 
@@ -11,5 +10,8 @@
         public const string AdminRoleName = "Administrator";
 
         public const string DevelopmentAdminEmail = "admin@abv.bg";
+
+        public const int ReleaseYear = 2023;
+
     }
 }

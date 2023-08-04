@@ -6,9 +6,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link rel="stylesheet" href="~/css/loadmore.css" />
-
 
     <style>
         body {
@@ -231,28 +228,6 @@
                     }
                 </div>
             </div>
-
-            <div id="load-more"> load more </div>
-</div>
-
-    <script>
-        let loadMoreBtn = document.querySelector('#load-more');
-        let currentItem = 9;
-
-        loadMoreBtn.onclick = () => {
-            let boxes = [...document.querySelectorAll('.fragrance-card')];
-            for (let i = currentItem; i <= currentItem + 1; i++) {
-                if (boxes[i]) {
-                    boxes[i].style.display = 'inline-block';
-                }
-            }
-            currentItem += 3;
-
-            if (currentItem >= boxes.length) {
-                loadMoreBtn.style.display = 'none';
-            }
-        }
-    </script>
 
 </body>
 </html>

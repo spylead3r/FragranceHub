@@ -12,14 +12,6 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/FragranceHub.Web.styles.css" asp-append-version="true" />
-
-    <style>
-        li {
-            border-right: 1px solid #bbb;
-        }
-
-    </style>
-
 </head>
 <body>
     <header>
@@ -57,7 +49,7 @@
                     }
 
                 </ul>
-                <!-- Move the _LoginPartial to the right side -->
+
                 <partial name="_LoginPartial" class="navbar-nav ml-auto" />
             </div>
         </nav>
@@ -70,15 +62,6 @@
         </main>
     </div>
 
-    @*   <footer class="border-top footer text-muted">
-    <div class="container">
-    &copy;Fragrantica™ @DateTime.UtcNow.Year
-    @if (DateTime.UtcNow.Year != ReleaseYear)
-    {
-    Html.Raw($" - {DateTime.UtcNow.Year}");
-    }
-    </div>
-    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
