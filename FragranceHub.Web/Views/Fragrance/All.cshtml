@@ -6,6 +6,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/loadmore.css" />
+
 
     <style>
         body {
@@ -60,20 +63,28 @@
         }
 
         .flip-card-front {
-            background-color: #bbb;
-            color: black;
+                background-color: #bbb;
+        color: black;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(45deg, #f3f3f3, #ccc);
         }
 
 
                 .flip-card-back {
-            background-color: mediumpurple;
-            opacity: 0.7;
-            color: white;
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+                background-color: mediumpurple;
+        opacity: 0.7;
+        color: white;
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 23px 23px 10px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(45deg, #7c44b5, #522d91);
         }
 
         .flip-card-back h1 {
@@ -117,7 +128,12 @@
         
         .search-form {
             color: mediumpurple;
-        }   
+        }
+
+                .fragrance-card {
+            margin-bottom: 45px;
+        }
+
     </style>
 </head>
 <body>
@@ -216,10 +232,11 @@
                                                 <img src="@fragrance.ImageUrl" alt="@fragrance.Name" style="width:300px;height:300px;">
                                             </div>
                                             <div class="flip-card-back">
-                                                <h1>@fragrance.Name</h1>
+                                                <h1>@fragrance.Name</h1
                                                 <p>Price: @fragrance.Price</p>
                                                 <!-- Add any other fragrance details you want to display on the back side of the card -->
                                                 <button class="add-to-cart-btn">Add to Cart</button>
+                                    <partial name="_FragrancePartial" model="@fragrance" />
                                             </div>
                                         </div>
                                     </div>
@@ -227,7 +244,6 @@
                             </div>
                     }
                 </div>
-            </div>
-
+            </div>>
 </body>
 </html>

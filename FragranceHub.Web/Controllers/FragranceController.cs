@@ -1,5 +1,6 @@
 ﻿using FragranceHub.Services.Data.Interfaces;
 using FragranceHub.Services.Data.Models.Fragrance;
+using FragranceHub.Web.Infrastructure.Extensions;
 using FragranceHub.Web.ViewModels.Fragrance;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -78,6 +79,75 @@ namespace FragranceHub.Web.Controllers
             }
 
             return this.RedirectToAction("All", "Fragrance");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+            bool fragranceExists = await fragranceService
+                .ExistsByIdAsync(id);
+
+            if (!fragranceExists)
+            {
+
+
+                return this.NotFound(); 
+            }
+
+
+
+            try
+            {
+                FragranceFormModel formModel = await fragranceService
+                    .GetFragranceForEditByIdAsync(id);
+                formModel.Categories = await categoryService.AllCategoriesAsync();
+
+                return View(formModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+
+            return RedirectToAction("All", "Fragrances");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string id, FragranceFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                model.Categories = await categoryService.AllCategoriesAsync();
+
+                return View(model);
+            }
+
+            bool fragranceExists = await fragranceService
+                .ExistsByIdAsync(id);
+
+            if (!fragranceExists)
+            {
+
+                return this.NotFound();
+            }
+
+
+
+            try
+            {
+                await fragranceService.EditFragranceByIdAndFormModelAsync(id, model);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty,
+                    "Unexpected error occurred while trying to update the house. Please try again later or contact administrator!");
+                model.Categories = await categoryService.AllCategoriesAsync();
+
+                return View(model);
+            }
+
+
+            return RedirectToAction("All", "Fragrance");
         }
     }
 }

@@ -13,5 +13,13 @@ namespace FragranceHub.Services.Data.Interfaces
 
         Task CreateAsync(FragranceFormModel formModel);
 
+        Task<bool> ExistsByIdAsync(string fragranceId);
+
+        Task<FragranceFormModel> GetFragranceForEditByIdAsync(string houseId);
+
+        Task EditFragranceByIdAndFormModelAsync(string fragranceId, FragranceFormModel formModel);
+
+        //Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string houseId);
+
     }
 }

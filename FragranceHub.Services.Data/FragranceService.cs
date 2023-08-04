@@ -90,5 +90,55 @@ namespace FragranceHub.Services.Data
             await this.dbContext.Fragrances.AddAsync(fragrance);
             await this.dbContext.SaveChangesAsync();
         }
+
+        public async Task<bool> ExistsByIdAsync(string fragranceId)
+        {
+            bool result = await dbContext
+                .Fragrances
+                .Where(f => f.IsActive)
+                .AnyAsync(f => f.Id.ToString() == fragranceId);
+
+            return result;
+        }
+
+        public async Task<FragranceFormModel> GetFragranceForEditByIdAsync(string houseId)
+        {
+            Fragrance fragrance = await dbContext
+                .Fragrances
+                .Include(f => f.Category)
+                .Where(f => f.IsActive)
+                .FirstAsync(f => f.Id.ToString() == houseId);
+
+            return new FragranceFormModel
+            {
+                Name = fragrance.Name,
+                Price = fragrance.Price,
+                ImageUrl = fragrance.ImageUrl,
+                Description = fragrance.Description,
+                CategoryId = fragrance.CategoryId
+            };
+        }
+
+        public async Task EditFragranceByIdAndFormModelAsync(string fragranceId, FragranceFormModel formModel)
+        {
+            Fragrance fragrance = await dbContext
+                .Fragrances
+                .Where(f => f.IsActive)
+                .FirstAsync(f => f.Id.ToString() == fragranceId);
+
+            fragrance.Name = formModel.Name;
+            fragrance.ImageUrl = formModel.ImageUrl;
+            fragrance.Description = formModel.Description;
+            fragrance.Price = formModel.Price;
+            fragrance.CategoryId = formModel.CategoryId;
+
+            await dbContext.SaveChangesAsync();
+        }
+
+        //public Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string houseId)
+        //{
+
+
+        //}
     }
 }

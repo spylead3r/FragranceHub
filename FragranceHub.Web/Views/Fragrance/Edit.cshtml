@@ -1,0 +1,14 @@
+﻿@model FragranceFormModel
+@{
+    ViewData["Title"] = "Edit Fragrance";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+<partial name="_FragranceFormPartial" model="@Model" />
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

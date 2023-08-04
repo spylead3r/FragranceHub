@@ -30,6 +30,8 @@ namespace FragranceHub.Data.Models
         [MaxLength(ImageUrlMaxLength)]
         public string ImageUrl { get; set; } = null!;
 
+        public bool IsActive { get; set; }
+
         public DateTime PublishedOn { get; set; }
 
         public int CategoryId { get; set; }

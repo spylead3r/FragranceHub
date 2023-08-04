@@ -11,20 +11,75 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/FragranceHub.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/navbar.css"/>
+    <style>
+                        /* Navbar */
+        .navbar {
+            background-color: black; /* Set the background color to black */
+            
+        }
+
+        /* Navbar brand text color */
+        .navbar-brand {
+            color: white; /* Set the text color to white */
+            line-height: 30px;
+        }
+
+            .logo-image {
+        max-height: 55px; 
+        .navbar-toggler-icon 
+            background-color: white; 
+        }
+
+        /* Nav item text color */
+        .navbar-nav .nav-link {
+            color: white; /* Set the nav link text color to white */
+            transition: color 0.3s;
+        }
+
+        /* Nav item text color on hover */
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa; /* Set the nav link text color on hover */
+        }
+
+        /* Dropdown menu background and text color */
+        .dropdown-menu {
+            background-color: black; /* Set the dropdown menu background color to black */
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dropdown item text color */
+        .dropdown-item {
+            color: white; /* Set the dropdown item text color to white */
+        }
+
+        /* Dropdown item text color on hover */
+        .dropdown-item:hover {
+            background-color: black; /* Set the dropdown item background color on hover */
+            color: #f8f9fa; /* Set the dropdown item text color on hover */
+        }
+
+            .navbar-nav .nav-item .nav-link {
+        color: white;
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
 
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Fragrantica™</a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <img src="https://avatars.mds.yandex.net/i?id=a8a1da40804f75b1fc0710ee2cff5373-5231317-images-thumbs&n=13" alt="Logo" class="logo-image">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+                    <li class="nav-item"> 
                         <a class="nav-link" asp-area="" asp-controller="Fragrance" asp-action="All">All Fragrances</a>
                     </li>
                     <li class="nav-item dropdown">

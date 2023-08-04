@@ -2,6 +2,13 @@
 
 
     <div class="fragrance-buttons">
-        <button class="btn btn-primary" onclick="addToCart(@Model.Id)">Add</button>
         <a class="btn btn-secondary" asp-controller="Fragrance" asp-action="Details" asp-route-id="@Model.Id">Details</a>
     </div>
+
+@if (User.IsAdmin())
+{
+    <a asp-area="" asp-controller="Fragrance" asp-action="Edit" asp-route-id="@Model.Id"
+   class="btn btn-warning">Edit</a>
+    <a asp-area="" asp-controller="Fragrance" asp-action="Delete" asp-route-id="@Model.Id"
+   class="btn btn-danger">Delete</a>
+}

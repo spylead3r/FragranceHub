@@ -13,6 +13,10 @@ namespace FragranceHub.Data.Configurations
                 .Property(h => h.PublishedOn)
                 .HasDefaultValue(DateTime.UtcNow);
 
+            builder
+                .Property(f => f.IsActive)
+                .HasDefaultValue(true);
+
             builder.HasKey(f => f.Id);
 
             builder.HasOne(f => f.Category)
