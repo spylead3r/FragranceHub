@@ -108,8 +108,6 @@ namespace FragranceHub.Web.Controllers
             {
                 return this.NotFound();
             }
-
-            return RedirectToAction("All", "Fragrances");
         }
 
         [HttpPost]
@@ -140,7 +138,7 @@ namespace FragranceHub.Web.Controllers
             catch (Exception)
             {
                 ModelState.AddModelError(string.Empty,
-                    "Unexpected error occurred while trying to update the house. Please try again later or contact administrator!");
+                    "Unexpected error occurred while trying to update the fragrance.");
                 model.Categories = await categoryService.AllCategoriesAsync();
 
                 return View(model);

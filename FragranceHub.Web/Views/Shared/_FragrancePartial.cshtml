@@ -1,9 +1,7 @@
 ﻿@model FragranceAllViewModel
 
 
-    <div class="fragrance-buttons">
-        <a class="btn btn-secondary" asp-controller="Fragrance" asp-action="Details" asp-route-id="@Model.Id">Details</a>
-    </div>
+    
 
 @if (User.IsAdmin())
 {

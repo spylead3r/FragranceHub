@@ -16,25 +16,31 @@
         }
 
         .fragrance-row {
-            margin-bottom: 20px; /* Adjust the margin as needed */
+            margin-bottom: 20px;
+        }
+
+        .mt-2, .my-2 {
+    margin-top: 2.5rem!important;
+        }
+
+        .form-control {
+        background-color: #f8f9fa;
         }
 
         h1 {
              font-size: 48px;
-            font-family: "Roboto", sans-serif;
-            color: purple; /* Set the text color to purple */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
-            background: linear-gradient(to right, #FFC107, #FF9800); /* Use a gradient background */
+            font-family: cursive;
+            color: whitesmoke;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+            background: linear-gradient(to right, white, white);
             background-clip: text;
-            -webkit-background-clip: text; /* For Safari support */
-            color: transparent;
+            -webkit-background-clip: text; 
             display: block;
-            text-align: center; /* Center the text horizontally */
+            text-align: center; 
 
         }
 
         .flip-card {
-            background-color: transparent;
             width: 300px;
             height: 300px;
             perspective: 1000px;
@@ -55,6 +61,7 @@
         }
 
         .flip-card-front, .flip-card-back {
+             background-color: black; 
             position: absolute;
             width: 100%;
             height: 100%;
@@ -68,13 +75,13 @@
         border: none;
         border-radius: 8px;
         box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
-        background: linear-gradient(45deg, #f3f3f3, #ccc);
+        background: linear-gradient(45deg, black, black);
         }
 
 
                 .flip-card-back {
-                background-color: mediumpurple;
-        opacity: 0.7;
+                background-color:black;
+        opacity: 0.91;
         color: white;
         transform: rotateY(180deg);
         display: flex;
@@ -84,30 +91,28 @@
         border: none;
         border-radius: 8px;
         box-shadow: 23px 23px 10px rgba(0, 0, 0, 0.3);
-        background: linear-gradient(45deg, #7c44b5, #522d91);
+    
         }
 
         .flip-card-back h1 {
-            font-size: 28px; /* Adjust the font size for the name */
-            font-family: "Arial", sans-serif; /* You can use a different font family */
-            margin-bottom: 10px; /* Add some space below the name */
-            /* Add any other styles for the header */
+            font-size: 28px; 
+
         }
 
         .flip-card-back p {
             font-size: 20px;
-            /* Add any other styles for the paragraph */
+            color: white;
         }
 
-        /* If you want to maintain a consistent layout for all cards, you can set a fixed width and height for each card */
         .fragrance-card {
             width: 300px;
             height: 300px;
-            /* Add any other styles you need for each card */
         }
 
         .fragrance-title {
-            margin-bottom: 50px; /* Adjust the margin as needed */
+            margin-bottom: 50px; 
+            margin-top: 3.5rem;
+            color:grey
         }
 
         .add-to-cart-btn {
@@ -120,19 +125,55 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+                margin-bottom: 9px;
         }
 
         .fragrance-card-column {
-            margin-bottom: 50px; /* Adjust the margin as needed */
+            margin-bottom: 50px; 
         }
         
-        .search-form {
-            color: mediumpurple;
-        }
 
                 .fragrance-card {
             margin-bottom: 45px;
         }
+
+        .add-to-wishlist-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        color: #e74c3c; /* Change color as needed */
+        font-size: 24px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .add-to-wishlist-btn:hover {
+        color: #c0392b; /* Change color on hover */
+    }
+
+     
+    .details-btn
+    .add-to-cart-btn {
+        
+        margin-top: 1.5rem;
+    }
+
+    .flip-card-back h1 {
+    font-size: 28px;
+    padding-top: 30px;
+}
+.flip-card-back h1, .flip-card-back p {
+    margin-bottom: 0.5rem;
+}
+
+
+    .flip-card-back h1
+    .flip-card-back p {
+        margin-top: 1.5rem;
+    }
+
 
     </style>
 </head>
@@ -226,7 +267,6 @@
                     {
                             <div class="col-lg-4 col-md-6 col-sm-12 fragrance-card">
                                 <div class="flip-card fragrance-card">
-                                    <div class="flip-card fragrance-card">
                                         <div class="flip-card-inner">
                                             <div class="flip-card-front">
                                                 <img src="@fragrance.ImageUrl" alt="@fragrance.Name" style="width:300px;height:300px;">
@@ -234,14 +274,15 @@
                                             <div class="flip-card-back">
                                                 <h1>@fragrance.Name</h1
                                                 <p>Price: @fragrance.Price</p>
-                                                <!-- Add any other fragrance details you want to display on the back side of the card -->
+                                                <button class="add-to-wishlist-btn" data-fragrance-id="@fragrance.Id">
+                                                 <i class="fas fa-heart"></i>                                               
                                                 <button class="add-to-cart-btn">Add to Cart</button>
+                                                <button class="details-btn btn btn-secondary">Details</button>
                                     <partial name="_FragrancePartial" model="@fragrance" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                     }
                 </div>
             </div>>
