@@ -19,7 +19,11 @@ namespace FragranceHub.Services.Data.Interfaces
 
         Task EditFragranceByIdAndFormModelAsync(string fragranceId, FragranceFormModel formModel);
 
-        //Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string houseId);
+        Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string houseId);
+        
+        Task<FragrancePreDeleteViewModel> GetHouseForDeleteByIdAsync(string houseId);
+        
+        Task DeleteHouseByIdAsync(string houseId);
 
     }
 }

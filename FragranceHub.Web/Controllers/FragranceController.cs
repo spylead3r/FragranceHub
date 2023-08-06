@@ -1,10 +1,13 @@
-﻿using FragranceHub.Services.Data.Interfaces;
+﻿using FragranceHub.Data.Models;
+using FragranceHub.Services.Data;
+using FragranceHub.Services.Data.Interfaces;
 using FragranceHub.Services.Data.Models.Fragrance;
 using FragranceHub.Web.Infrastructure.Extensions;
 using FragranceHub.Web.ViewModels.Fragrance;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
+using static FragranceHub.Common.EntityValidationConstants;
 
 namespace FragranceHub.Web.Controllers
 {
@@ -13,6 +16,7 @@ namespace FragranceHub.Web.Controllers
     {
         private readonly IFragranceService fragranceService;
         private readonly ICategoryService categoryService;
+
         public FragranceController(IFragranceService fragranceService, ICategoryService categoryService)
         {
             this.fragranceService = fragranceService;
@@ -24,6 +28,7 @@ namespace FragranceHub.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> All([FromQuery] AllFragrancesQueryModel queryModel)
         {
+
             AllFragrancesFilteredModel serviceModel = await fragranceService.AllFragrancesAsync(queryModel);
 
             queryModel.Fragrances = serviceModel.Fragrances;
@@ -67,15 +72,15 @@ namespace FragranceHub.Web.Controllers
 
             try
             {
-                
-               await this.fragranceService.CreateAsync(model);
+
+                await this.fragranceService.CreateAsync(model);
             }
             catch (Exception)
             {
                 this.ModelState.AddModelError(String.Empty, "Unexpected error occured while trying to add fragrance!");
                 model.Categories = await this.categoryService.AllCategoriesAsync();
 
-                return this.View(model); 
+                return this.View(model);
             }
 
             return this.RedirectToAction("All", "Fragrance");
@@ -91,7 +96,7 @@ namespace FragranceHub.Web.Controllers
             {
 
 
-                return this.NotFound(); 
+                return this.NotFound();
             }
 
 
@@ -134,6 +139,8 @@ namespace FragranceHub.Web.Controllers
             try
             {
                 await fragranceService.EditFragranceByIdAndFormModelAsync(id, model);
+                return RedirectToAction("All", "Fragrance");
+
             }
             catch (Exception)
             {
@@ -143,9 +150,60 @@ namespace FragranceHub.Web.Controllers
 
                 return View(model);
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(string id)
+        {
+            bool houseExists = await fragranceService
+                .ExistsByIdAsync(id);
+
+            if (!houseExists)
+            {
+                return this.NotFound();
+            }
 
 
-            return RedirectToAction("All", "Fragrance");
+            try
+            {
+                FragrancePreDeleteViewModel viewModel =
+                    await fragranceService.GetHouseForDeleteByIdAsync(id);
+
+                return View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+
+
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id, FragrancePreDeleteViewModel model)
+        {
+            bool houseExists = await fragranceService
+                .ExistsByIdAsync(id);
+
+
+            if (!houseExists)
+            {
+                return this.NotFound();
+
+            }
+
+
+            try
+            {
+                await fragranceService.DeleteHouseByIdAsync(id);
+
+                return RedirectToAction("All", "Fragrance");
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
         }
     }
 }

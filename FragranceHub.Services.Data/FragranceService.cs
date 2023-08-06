@@ -53,8 +53,9 @@ namespace FragranceHub.Services.Data
             };
 
 
-            IEnumerable<FragranceAllViewModel> allFragrances = await fragranceQuery.
-                Skip((model.CurrentPage - 1) * model.FragrancesPerPage)
+            IEnumerable<FragranceAllViewModel> allFragrances = await fragranceQuery
+                .Where(f => f.IsActive)
+                .Skip((model.CurrentPage - 1) * model.FragrancesPerPage)
                 .Take(model.FragrancesPerPage)
                 .Select(f => new FragranceAllViewModel()
                 {
@@ -135,10 +136,36 @@ namespace FragranceHub.Services.Data
             await dbContext.SaveChangesAsync();
         }
 
-        //public Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string houseId)
-        //{
 
+        public async Task<FragrancePreDeleteViewModel> GetHouseForDeleteByIdAsync(string houseId)
+        {
+            Fragrance fragrance = await dbContext
+                .Fragrances
+                .Where(f => f.IsActive)
+                .FirstAsync(f => f.Id.ToString() == houseId);
 
-        //}
+            return new FragrancePreDeleteViewModel
+            {
+                Name = fragrance.Name,
+                ImageUrl = fragrance.ImageUrl
+            };
+        }
+
+        public async Task DeleteHouseByIdAsync(string houseId)
+        {
+            Fragrance houseToDelete = await dbContext
+                .Fragrances
+                .Where(f => f.IsActive)
+                .FirstAsync(f => f.Id.ToString() == houseId);
+
+            houseToDelete.IsActive = false;
+
+            await dbContext.SaveChangesAsync();
+        }
+
+        public Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string houseId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
