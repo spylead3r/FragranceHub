@@ -1,4 +1,5 @@
-﻿using FragranceHub.Services.Data.Interfaces;
+﻿using FragranceHub.Data.Models;
+using FragranceHub.Services.Data.Interfaces;
 using FragranceHub.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,9 +19,6 @@ namespace FragranceHub.Services.Data
             this.dbContext = dbContext;
         }
 
-        public Task<string> GetUserIdAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
+     
     }
 }

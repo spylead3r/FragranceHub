@@ -8,6 +8,6 @@ namespace FragranceHub.Services.Data.Interfaces
 {
     public interface IUserService
     {
-        public Task<string> GetUserIdAsync(string id);
+
     }
 }

@@ -21,9 +21,9 @@ namespace FragranceHub.Data.Configurations
                    .HasForeignKey(s => s.FragranceId)
                    .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(s => s.User)
+            builder.HasOne(s => s.ShoppingCart)
                    .WithMany()
-                   .HasForeignKey(s => s.UserId)
+                   .HasForeignKey(s => s.CartId)
                    .OnDelete(DeleteBehavior.Restrict);
 
         }

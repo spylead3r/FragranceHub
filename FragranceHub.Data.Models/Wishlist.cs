@@ -13,7 +13,7 @@ namespace FragranceHub.Data.Models
         public Guid Id { get; set; }
 
         public Guid UserId { get; set; }
-        public ApplicationUser? User { get; set; }
+        public virtual ApplicationUser User { get; set; } = null!;
 
         public ICollection<Fragrance> Fragrances { get; set; }
     }

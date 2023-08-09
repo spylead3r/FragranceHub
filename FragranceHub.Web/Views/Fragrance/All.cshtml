@@ -261,28 +261,89 @@
 
             <div class="container-fluid">
         <div class="row box-container mt-lg-5">
-                    @foreach (var fragrance in Model.Fragrances)
-                    {
-                            <div class="col-lg-4 col-md-6 col-sm-12 fragrance-card">
-                                <div class="flip-card fragrance-card">
-                                        <div class="flip-card-inner">
-                                            <div class="flip-card-front">
-                                                <img src="@fragrance.ImageUrl" alt="@fragrance.Name" style="width:300px;height:300px;">
-                                            </div>
-                                            <div class="flip-card-back">
-                                                <h1>@fragrance.Name</h1
-                                                <p>Price: @fragrance.Price</p>
-                                                <button class="add-to-wishlist-btn" data-fragrance-id="@fragrance.Id">
-                                                 <i class="fas fa-heart"></i>                                               
-                                                <button class="add-to-cart-btn">Add to Cart</button>
-                                                <button class="details-btn btn btn-secondary">Details</button>
-                                    <partial name="_FragrancePartial" model="@fragrance" />
-                                            </div>
+            @foreach (var fragrance in Model.Fragrances)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12 fragrance-card">
+                    <div class="flip-card fragrance-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="@fragrance.ImageUrl" alt="@fragrance.Name" style="width:300px;height:300px;">
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>@fragrance.Name</h1>
+                                <p>Price: @fragrance.Price</p>
+                                <button class="add-to-wishlist-btn" data-fragrance-id="@fragrance.Id">
+                                    <div class="spinner-container d-none">
+                                        <div class="spinner-border text-danger" role="status">
+                                            <span class="sr-only">Loading...</span>
                                         </div>
                                     </div>
-                                </div>
-                    }
+                                    <div class="heart-icon-container">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="checkmark-container d-none">
+                                        <i class="fas fa-check-circle text-success"></i>
+                                    </div>
+                                </button>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                                <button class="details-btn btn btn-secondary">Details</button>
+                                <partial name="_FragrancePartial" model="@fragrance" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
                 </div>
             </div>>
+
+    <script>
+            <!-- ... Вашият HTML код ... -->
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const wishlistButtons = document.querySelectorAll(".add-to-wishlist-btn");
+            wishlistButtons.forEach(button => {
+                button.addEventListener("click", async function () {
+                    const fragranceId = button.getAttribute("data-fragrance-id");
+                    const spinnerContainer = button.querySelector(".spinner-container");
+                    const heartIconContainer = button.querySelector(".heart-icon-container");
+                    const checkmarkContainer = button.querySelector(".checkmark-container");
+
+                    spinnerContainer.classList.remove("d-none");
+                    heartIconContainer.classList.add("d-none");
+                    button.disabled = true;
+
+                    try {
+                        const response = await fetch(`/AddToFavorites?fragranceId=${fragranceId}`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        });
+
+                        if (response.ok) {
+                            checkmarkContainer.classList.remove("d-none");
+                            setTimeout(function () {
+                                button.disabled = false;
+                                checkmarkContainer.classList.add("d-none");
+                                heartIconContainer.classList.remove("d-none");
+                            }, 1000);
+                        } else {
+                            // Handle error cases
+                            console.error("Failed to add fragrance to wishlist.");
+                        }
+                    } catch (error) {
+                        // Handle network or other errors
+                        console.error("An error occurred while adding fragrance to wishlist:", error);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- ... Същият HTML код ... -->
+    </script>
+
 </body>
 </html>

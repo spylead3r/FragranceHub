@@ -21,6 +21,8 @@ namespace FragranceHub.Web.Data
 
         public DbSet<Wishlist> Wishlists { get; set; } = null!;
 
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; } = null!;
+
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)

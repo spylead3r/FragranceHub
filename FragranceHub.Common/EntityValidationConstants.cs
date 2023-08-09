@@ -55,5 +55,14 @@
             public const int LastNameMinLength = 1;
             public const int LastNameMaxLength = 15;
         }
+
+        public static class CartValidations
+        {
+            public const string TotalPriceMinValue = "0";
+            public const string TotalPriceMaxValue = "2147483647";
+
+            public const string QuantityMinValue = "0";
+            public const string QuantityMaxValue = "100";
+        }
     }
 }
