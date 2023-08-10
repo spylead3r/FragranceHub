@@ -40,6 +40,23 @@ namespace FragranceHub.Web.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Remove(Guid fragranceId)
+        {
+            string userId = User.GetId()!;
+            var result = await wishlistService.RemoveFromFavorites(fragranceId, userId);
+
+            if (result)
+            {
+                return Ok(); // Return a success status if removal is successful
+            }
+            else
+            {
+                return BadRequest("Failed to remove fragrance from wishlist."); // Return an error status if removal fails
+            }
+        }
+
+
 
         public async Task<IActionResult> Wishlist()
         {
@@ -53,5 +70,7 @@ namespace FragranceHub.Web.Controllers
 
             return View(viewModel);
         }
+
+
     }
 }

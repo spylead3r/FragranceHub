@@ -66,6 +66,49 @@ namespace FragranceHub.Services.Data
  
         }
 
+        public async Task<bool> RemoveFromFavorites(Guid fragranceId, string userId)
+        {
+            try
+            {
+                ApplicationUser? user = await dbContext
+                .Users
+                .FirstOrDefaultAsync(u => u.Id.ToString() == userId);
+
+
+                if (user == null)
+                {
+                    return false; // User not found, return false
+                }
+
+                var wishlist = await dbContext.Wishlists
+                    .Include(w => w.Fragrances)
+                    .SingleOrDefaultAsync(w => w.UserId.ToString() == userId);
+
+                if (wishlist == null)
+                {
+                    return false; // Wishlist not found, return false
+                }
+
+                var fragrance = await dbContext.Fragrances.FindAsync(fragranceId);
+
+                if (fragrance != null && wishlist.Fragrances.Contains(fragrance))
+                {
+                    wishlist.Fragrances.Remove(fragrance);
+                    await dbContext.SaveChangesAsync();
+                    return true; // Removal successful
+                }
+                else
+                {
+                    return false; // Fragrance not found in wishlist, return false
+                }
+            }
+            catch (Exception)
+            {
+                return false; // An error occurred, return false
+            }
+        }
+
+
         public async Task<List<FragranceAllViewModel>> GetFragrancesInWishlist(string userId)
         {
             var wishlist = await dbContext.Wishlists

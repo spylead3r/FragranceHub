@@ -32,3 +32,34 @@ else
     <p>Your wishlist is empty.</p>
 }
 
+<script>
+    const removeButtons = document.querySelectorAll(".remove-from-wishlist-btn");
+    removeButtons.forEach(button => {
+        button.addEventListener("click", async function () {
+            const fragranceId = button.getAttribute("data-fragrance-id");
+
+            try {
+                const response = await fetch(`/Wishlist/Remove?fragranceId=${fragranceId}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                if (response.ok) {
+                    // Successful removal, update button styling
+                    button.classList.remove("active");
+                } else {
+                    // Handle error cases
+                    console.error("Failed to remove fragrance from wishlist.");
+                }
+            } catch (error) {
+                // Handle network or other errors
+                console.error("An error occurred while removing fragrance from wishlist:", error);
+            }
+        });
+    });
+
+
+</script>
+

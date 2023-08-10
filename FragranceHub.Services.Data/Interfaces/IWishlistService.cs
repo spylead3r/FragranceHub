@@ -12,5 +12,7 @@ namespace FragranceHub.Services.Data.Interfaces
         Task<bool> AddToFavorites(Guid fragranceId, string userId);
 
         Task<List<FragranceAllViewModel>> GetFragrancesInWishlist(string userId);
+
+        Task<bool> RemoveFromFavorites(Guid fragranceId, string userId);
     }
 }
