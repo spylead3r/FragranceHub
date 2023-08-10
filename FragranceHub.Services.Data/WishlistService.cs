@@ -22,32 +22,48 @@ namespace FragranceHub.Services.Data
 
         public async Task<bool> AddToFavorites(Guid fragranceId, string userId)
         {
-            var fragrance = await dbContext.Fragrances.FindAsync(fragranceId);
-            var user = await dbContext.Users.FindAsync(userId);
 
-            if (fragrance == null || user == null)
-            {
-                return false;
-            }
+                ApplicationUser? user = await dbContext
+                .Users
+                .FirstOrDefaultAsync(u => u.Id.ToString() == userId);
 
-            var wishlist = await dbContext.Wishlists
-                .Include(w => w.Fragrances)
-                .FirstOrDefaultAsync(w => w.UserId.ToString() == userId);
+                if (user == null)
+                {
+                    return false; // User not found, return false
+                }
 
-            if (wishlist == null)
-            {
-                wishlist = new Wishlist { UserId = Guid.Parse(userId) };
-                dbContext.Wishlists.Add(wishlist);
-            }
+                // Check if the fragrance is already in the user's wishlist
+                var wishlist = await dbContext.Wishlists
+                    .Include(w => w.Fragrances)
+                    .SingleOrDefaultAsync(w => w.UserId == user.Id);
 
-            if (!wishlist.Fragrances.Contains(fragrance))
-            {
-                wishlist.Fragrances.Add(fragrance);
-                await dbContext.SaveChangesAsync();
+                if (wishlist == null)
+                {
+                    // Create a new wishlist for the user if it doesn't exist
+                    wishlist = new Wishlist
+                    {
+                        UserId = user.Id
+                    };
+
+                    dbContext.Wishlists.Add(wishlist);
+                    await dbContext.SaveChangesAsync(); // Save changes to the database
+                }
+
+                // Check if the fragrance is already in the wishlist
+                var fragranceExistsInWishlist = wishlist.Fragrances.Any(f => f.Id == fragranceId);
+
+                if (!fragranceExistsInWishlist)
+                {
+                    var fragrance = await dbContext.Fragrances.FindAsync(fragranceId);
+                    if (fragrance != null)
+                    {
+                        wishlist.Fragrances.Add(fragrance);
+                        await dbContext.SaveChangesAsync(); // Save changes to the database
+                    }
+                }
+
                 return true;
-            }
-
-            return false;
+ 
         }
 
         public async Task<List<FragranceAllViewModel>> GetFragrancesInWishlist(string userId)

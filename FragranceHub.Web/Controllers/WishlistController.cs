@@ -4,6 +4,7 @@ using FragranceHub.Web.Infrastructure.Extensions;
 using FragranceHub.Web.ViewModels.Wishlist;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FragranceHub.Web.Controllers
 {
@@ -26,15 +27,17 @@ namespace FragranceHub.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToFavorites(Guid fragranceId)
         {
-            var userId = User.GetId();
-            var success = await wishlistService.AddToFavorites(fragranceId, userId);
+            string userId = User.GetId()!; // Get the current user's ID
+            bool success = await wishlistService.AddToFavorites(fragranceId, userId);
 
             if (success)
             {
-                return Ok();
+                return Ok(); // Return a success response
             }
-
-            return BadRequest("Unable to add fragrance to favorites.");
+            else
+            {
+                return BadRequest("Failed to add fragrance to favorites."); // Return an error response
+            }
         }
 
 
