@@ -86,7 +86,7 @@ namespace FragranceHub.Services.Data
 
                 if (wishlist == null)
                 {
-                    return false; // Wishlist not found, return false
+                    return false; 
                 }
 
                 var fragrance = await dbContext.Fragrances.FindAsync(fragranceId);
@@ -95,16 +95,16 @@ namespace FragranceHub.Services.Data
                 {
                     wishlist.Fragrances.Remove(fragrance);
                     await dbContext.SaveChangesAsync();
-                    return true; // Removal successful
+                    return true; 
                 }
                 else
                 {
-                    return false; // Fragrance not found in wishlist, return false
+                    return false; 
                 }
             }
             catch (Exception)
             {
-                return false; // An error occurred, return false
+                return false; 
             }
         }
 
@@ -123,8 +123,7 @@ namespace FragranceHub.Services.Data
                         Id = f.Id.ToString(),
                         ImageUrl = f.ImageUrl,
                         Name = f.Name,
-                        Price = f.Price,
-                        // Other properties you want to display
+                        Price = f.Price,                      
                     })
                     .ToList();
 

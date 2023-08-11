@@ -205,5 +205,32 @@ namespace FragranceHub.Web.Controllers
                 return this.NotFound();
             }
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(string id)
+        {
+            bool fragranceExist = await this.fragranceService
+                .ExistsByIdAsync(id);
+
+            if (!fragranceExist)
+            {
+                this.TempData[ErrorMessage] = "The fragrance is currently unavailable!";
+
+                return this.RedirectToAction("All", "Fragrance");
+            }
+
+            try
+            {
+                FragranceDetailsViewModel viewModel = await this.fragranceService
+                    .GetDetailsByIdAsync(id);
+
+                return View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
     }
 }

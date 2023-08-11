@@ -15,11 +15,11 @@ namespace FragranceHub.Services.Data.Interfaces
 
         Task<bool> ExistsByIdAsync(string fragranceId);
 
-        Task<FragranceFormModel> GetFragranceForEditByIdAsync(string houseId);
+        Task<FragranceFormModel> GetFragranceForEditByIdAsync(string fragranceId);
 
         Task EditFragranceByIdAndFormModelAsync(string fragranceId, FragranceFormModel formModel);
 
-        Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string houseId);
+        Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string fragranceId);
         
         Task<FragrancePreDeleteViewModel> GetFragranceForDeleteByIdAsync(string houseId);
         

@@ -1,0 +1,32 @@
+﻿@model FragranceDetailsViewModel
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h2>@Model.Name</h2>
+                <p>Category: @Model.Category</p>
+                <p>Price: @Model.Price</p>
+                <p>Description: @Model.Description</p>
+               
+
+                <button class="add-to-wishlist-btn" data-fragrance-id="@Model.Id">
+                    Add to Wishlist
+                </button>
+                <button class="remove-from-wishlist-btn" data-fragrance-id="@Model.Id">
+                    Remove from Wishlist
+                </button>
+                <button class="details-btn" data-fragrance-id="@Model.Id">
+                    Details
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Your script for handling buttons (Add to Wishlist, Remove from Wishlist, Details) here
+    </script>
+
+

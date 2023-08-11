@@ -163,9 +163,21 @@ namespace FragranceHub.Services.Data
             await dbContext.SaveChangesAsync();
         }
 
-        public Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string houseId)
+        public async Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string fragranceId)
         {
-            throw new NotImplementedException();
+            Fragrance fragrance = await dbContext
+                .Fragrances
+                .Where(f => f.IsActive)
+                .FirstAsync(f => f.Id.ToString() == fragranceId);
+
+            return new FragranceDetailsViewModel
+            {
+                Id = fragrance.Id.ToString(),
+                Name = fragrance.Name,
+                ImageUrl = fragrance.ImageUrl,
+                Price = fragrance.Price,
+                Description = fragrance.Description,
+            };
         }
     }
 }

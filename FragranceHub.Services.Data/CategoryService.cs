@@ -43,7 +43,7 @@ namespace FragranceHub.Services.Data
         {
             IEnumerable<FragranceByCategoryForm> menFragrances =
                await this.dbContext.Fragrances
-               .Where(f => f.Category.Id == 1)
+               .Where(f => f.Category.Id == 1 && f.IsActive)
                 .Select(f => new FragranceByCategoryForm()
                 {
                     Name = f.Name,
@@ -59,7 +59,7 @@ namespace FragranceHub.Services.Data
         {
             IEnumerable<FragranceByCategoryForm> womenFragrances =
                await this.dbContext.Fragrances
-               .Where(f => f.Category.Id == 2)
+               .Where(f => f.Category.Id == 2 && f.IsActive)
                 .Select(f => new FragranceByCategoryForm()
                 {
                     Name = f.Name,
