@@ -7,7 +7,7 @@ using FragranceHub.Web.ViewModels.Fragrance;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
-using static FragranceHub.Common.EntityValidationConstants;
+using static FragranceHub.Common.NotificationMessagesConstants;
 
 namespace FragranceHub.Web.Controllers
 {
@@ -95,7 +95,7 @@ namespace FragranceHub.Web.Controllers
             if (!fragranceExists)
             {
 
-
+                TempData[ErrorMessage] = "The fragrance is currently unavailable!";
                 return this.NotFound();
             }
 
@@ -167,7 +167,7 @@ namespace FragranceHub.Web.Controllers
             try
             {
                 FragrancePreDeleteViewModel viewModel =
-                    await fragranceService.GetHouseForDeleteByIdAsync(id);
+                    await fragranceService.GetFragranceForDeleteByIdAsync(id);
 
                 return View(viewModel);
             }
@@ -196,7 +196,7 @@ namespace FragranceHub.Web.Controllers
 
             try
             {
-                await fragranceService.DeleteHouseByIdAsync(id);
+                await fragranceService.DeleteFragranceByIdAsync(id);
 
                 return RedirectToAction("All", "Fragrance");
             }

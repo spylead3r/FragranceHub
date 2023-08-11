@@ -137,7 +137,7 @@ namespace FragranceHub.Services.Data
         }
 
 
-        public async Task<FragrancePreDeleteViewModel> GetHouseForDeleteByIdAsync(string houseId)
+        public async Task<FragrancePreDeleteViewModel> GetFragranceForDeleteByIdAsync(string houseId)
         {
             Fragrance fragrance = await dbContext
                 .Fragrances
@@ -151,7 +151,7 @@ namespace FragranceHub.Services.Data
             };
         }
 
-        public async Task DeleteHouseByIdAsync(string houseId)
+        public async Task DeleteFragranceByIdAsync(string houseId)
         {
             Fragrance houseToDelete = await dbContext
                 .Fragrances

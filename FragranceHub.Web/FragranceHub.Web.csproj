@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Content\**" />
+    <Content Remove="wwwroot\Content\**" />
+    <EmbeddedResource Remove="wwwroot\Content\**" />
+    <None Remove="wwwroot\Content\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\css\site.css" />
   </ItemGroup>
 
@@ -34,10 +41,6 @@
     <ProjectReference Include="..\FragranceHub.Services.Data\FragranceHub.Services.Data.csproj" />
     <ProjectReference Include="..\FragranceHub.Web.Infrastructure\FragranceHub.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\FragranceHub.Web.ViewModels\FragranceHub.Web.ViewModels.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\Content\" />
   </ItemGroup>
 
 </Project>

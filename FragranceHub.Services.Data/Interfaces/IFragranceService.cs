@@ -21,9 +21,9 @@ namespace FragranceHub.Services.Data.Interfaces
 
         Task<FragranceDetailsViewModel> GetDetailsByIdAsync(string houseId);
         
-        Task<FragrancePreDeleteViewModel> GetHouseForDeleteByIdAsync(string houseId);
+        Task<FragrancePreDeleteViewModel> GetFragranceForDeleteByIdAsync(string houseId);
         
-        Task DeleteHouseByIdAsync(string houseId);
+        Task DeleteFragranceByIdAsync(string houseId);
 
     }
 }

@@ -5,6 +5,7 @@ using FragranceHub.Web.ViewModels.Wishlist;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using static FragranceHub.Common.NotificationMessagesConstants;
 
 namespace FragranceHub.Web.Controllers
 {
@@ -32,11 +33,14 @@ namespace FragranceHub.Web.Controllers
 
             if (success)
             {
-                return Ok(); // Return a success response
+
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                return BadRequest("Failed to add fragrance to favorites."); // Return an error response
+                TempData[ErrorMessage] = "Failed to add fragrance to favorites.";
+
+                return RedirectToAction("All", "Fragrance");
             }
         }
 
@@ -44,20 +48,25 @@ namespace FragranceHub.Web.Controllers
         public async Task<IActionResult> Remove(Guid fragranceId)
         {
             string userId = User.GetId()!;
-            var result = await wishlistService.RemoveFromFavorites(fragranceId, userId);
+           
 
-            if (result)
+            try
             {
-                return Ok(); // Return a success status if removal is successful
+                await wishlistService.RemoveFromFavorites(fragranceId, userId);
+
+
+                return RedirectToAction("All","Fragrance"); 
+
             }
-            else
+            catch (Exception)
             {
-                return BadRequest("Failed to remove fragrance from wishlist."); // Return an error status if removal fails
+                return RedirectToAction("Index", "Home");
+                throw;
             }
         }
 
 
-
+        [HttpGet]
         public async Task<IActionResult> Wishlist()
         {
             var userId = User.GetId();

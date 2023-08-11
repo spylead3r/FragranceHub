@@ -12,6 +12,8 @@ namespace FragranceHub.Web.Controllers
         {
             this.categoryService = categoryService;
         }
+
+        [HttpGet]
         public async Task<IActionResult> Men()
         {
             IEnumerable<FragranceByCategoryForm> viewModel =

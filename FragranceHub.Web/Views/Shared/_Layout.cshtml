@@ -2,49 +2,54 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfume world - Fragrantica™</title>
-    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/FragranceHub.Web.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/navbar.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
     <style>
-                        /* Navbar */
+
         .navbar {
-            background-color: black; /* Set the background color to black */
-            
+            background-color: black;        
         }
 
-        /* Navbar brand text color */
+ 
         .navbar-brand {
             color: white; /* Set the text color to white */
             line-height: 30px;
         }
 
-            .logo-image {
-        max-height: 55px; 
-        .navbar-toggler-icon 
-            background-color: white; 
+                  .logo-image {
+            max-height: 55px;
         }
 
-        /* Nav item text color */
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+
+
+
         .navbar-nav .nav-link {
-            color: #ffffff; /* Set the nav link text color to white */
+            color: #ffffff; 
             transition: color 0.3s;
         }
 
-        /* Nav item text color on hover */
+        
         .navbar-nav .nav-link:hover {
-            color: #f8f9fa; /* Set the nav link text color on hover */
+            color: #f8f9fa;
         }
 
-        /* Dropdown menu background and text color */
         .dropdown-menu {
             background-color: black; /* Set the dropdown menu background color to black */
             border: none;
@@ -59,12 +64,12 @@
         /* Dropdown item text color on hover */
         .dropdown-item:hover {
             background-color: black; /* Set the dropdown item background color on hover */
-            color: #f8f9fa; /* Set the dropdown item text color on hover */
+            color: whitesmoke; 
         }
-
-            .navbar-nav .nav-item .nav-link {
-        color: white;
+}
+        
     </style>
+
 </head>
 <body>
     <header>
@@ -117,10 +122,8 @@
         </main>
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
