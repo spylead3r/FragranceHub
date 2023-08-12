@@ -27,6 +27,9 @@ namespace FragranceHub.Services.Data.Interfaces
 
         Task UpdateFragranceAccordsAsync(string fragranceId, FragranceAccordsModel accords);
 
+        Task<FragranceAccordsModel> GetAccordsByFragranceIdAsync(string fragranceId);
+
+
 
     }
 }

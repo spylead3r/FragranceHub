@@ -11,6 +11,7 @@ namespace FragranceHub.Data.Models
         public Fragrance()
         {
             this.Reviews = new HashSet<Review>();
+            this.FragrancesAccords = new HashSet<FragranceAccords>();
         }
 
         [Key]
@@ -44,5 +45,7 @@ namespace FragranceHub.Data.Models
         public bool IsApproved { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
+
+        public virtual ICollection<FragranceAccords> FragrancesAccords { get; set; }
     }
 }

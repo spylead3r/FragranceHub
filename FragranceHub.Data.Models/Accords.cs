@@ -1,10 +1,16 @@
-﻿
-namespace FragranceHub.Web.ViewModels.Fragrance
-{
-    public class FragranceAccordsModel
-    {
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-        public string FragranceId { get; set; }
+namespace FragranceHub.Data.Models
+{
+    public class Accords
+    {
+        [Key]
+        public Guid Id { get; set; }
 
         public int Woody { get; set; }
         public int Citrus { get; set; }
@@ -15,5 +21,6 @@ namespace FragranceHub.Web.ViewModels.Fragrance
         public int Green { get; set; }
         public int Musky { get; set; }
         public int Herbal { get; set; }
+
     }
 }

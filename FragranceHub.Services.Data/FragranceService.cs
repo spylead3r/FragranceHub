@@ -182,21 +182,88 @@ namespace FragranceHub.Services.Data
             };
         }
 
+
+        //Accords
         public async Task UpdateFragranceAccordsAsync(string fragranceId, FragranceAccordsModel accords)
         {
-
-            // Fetch the fragrance from the database
-            var fragrance = await dbContext.Fragrances.FirstOrDefaultAsync(f => f.Id.ToString() == fragranceId);
+            var fragrance = await dbContext.Fragrances
+                .Include(f => f.FragrancesAccords)
+                .FirstOrDefaultAsync(f => f.Id.ToString() == fragranceId);
 
             if (fragrance != null)
             {
-                // Update the accords
-                //fragrance.Accords = accords;
+                var fragranceAccords = fragrance.FragrancesAccords.FirstOrDefault();
 
-                // Save changes
+                if (fragranceAccords == null)
+                {
+                    fragranceAccords = new FragranceAccords();
+                    fragrance.FragrancesAccords.Add(fragranceAccords);
+                }
+
+                var accordsEntity = fragranceAccords.Accords;
+                accordsEntity.Woody = accords.Woody;
+                accordsEntity.Citrus = accords.Citrus;
+                accordsEntity.Spicy = accords.Spicy;
+                accordsEntity.Aromatic = accords.Aromatic;
+                accordsEntity.Floral = accords.Floral;
+                accordsEntity.Fruity = accords.Fruity;
+                accordsEntity.Green = accords.Green;
+                accordsEntity.Herbal = accords.Herbal;
+                accordsEntity.Musky = accords.Musky;
+
+                await dbContext.SaveChangesAsync();
+            }
+        }
+
+
+
+        //new
+        public async Task<FragranceAccordsModel> GetAccordsByFragranceIdAsync(string fragranceId)
+        {
+            var fragranceAccords = await dbContext.FragranceAccords
+                .Include(fa => fa.Accords)
+                .FirstOrDefaultAsync(fa => fa.FragranceId.ToString() == fragranceId);
+
+            if (fragranceAccords == null)
+            {
+                // Initialize with default values and save it to the database
+                fragranceAccords = new FragranceAccords
+                {
+                    FragranceId = Guid.Parse(fragranceId),
+                    Accords = new Accords
+                    {
+                        Woody = 0,
+                        Citrus = 0,
+                        Spicy = 0,
+                        Aromatic = 0,
+                        Floral = 0,
+                        Fruity = 0,
+                        Green = 0,
+                        Herbal = 0,
+                        Musky = 0
+                    }
+                };
+
+                await dbContext.FragranceAccords.AddAsync(fragranceAccords);
                 await dbContext.SaveChangesAsync();
             }
 
+            return new FragranceAccordsModel
+            {
+                FragranceId = fragranceId,
+                Woody = fragranceAccords.Accords.Woody,
+                Citrus = fragranceAccords.Accords.Citrus,
+                Spicy = fragranceAccords.Accords.Spicy,
+                Aromatic = fragranceAccords.Accords.Aromatic,
+                Floral = fragranceAccords.Accords.Floral,
+                Fruity = fragranceAccords.Accords.Fruity,
+                Green = fragranceAccords.Accords.Green,
+                Herbal = fragranceAccords.Accords.Herbal,
+                Musky = fragranceAccords.Accords.Musky
+            };
         }
+
+
+
     }
 }

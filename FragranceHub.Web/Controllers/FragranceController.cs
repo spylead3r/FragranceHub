@@ -7,6 +7,7 @@ using FragranceHub.Web.ViewModels.Fragrance;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 using static FragranceHub.Common.NotificationMessagesConstants;
 
 namespace FragranceHub.Web.Controllers
@@ -233,43 +234,43 @@ namespace FragranceHub.Web.Controllers
             }
         }
 
-        public async Task<IActionResult> SetAccords()
+
+        //Accords
+        [HttpGet]
+        public async Task<IActionResult> EditAccords(string fragranceId)
         {
-            FragranceFormModel formModel = new FragranceFormModel()
+            bool fragranceExist = await fragranceService.ExistsByIdAsync(fragranceId);
+
+            if (!fragranceExist)
             {
-                Categories = await this.categoryService.AllCategoriesAsync()
-            };
+                TempData[ErrorMessage] = "The fragrance is currently unavailable!";
+                return RedirectToAction("All", "Fragrance");
+            }
 
-            return this.View(formModel);
-        }
+            // Get the accords for the fragrance
+            var accordsModel = await fragranceService.GetAccordsByFragranceIdAsync(fragranceId);
 
-
-
-
-        [Authorize(Roles = "Admin")] // Restrict access to admin users
-        public async Task<IActionResult> SetAccords(string fragranceId)
-        {
-            var fragrance = await fragranceService.GetDetailsByIdAsync(fragranceId);
-            return View(fragrance);
+            // Pass the accords model to the view
+            return View(accordsModel);
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> SetAccords(FragranceDetailsViewModel model)
+        public async Task<IActionResult> SaveAccords(FragranceAccordsModel accordsModel)
         {
             if (ModelState.IsValid)
             {
-                // Update the fragrance accords in your service layer
-                await fragranceService.UpdateFragranceAccordsAsync(model.Id, model.Accords);
+                // Update the accords for the fragrance
+                await fragranceService.UpdateFragranceAccordsAsync(accordsModel.FragranceId, accordsModel);
 
-                TempData[SuccessMessage] = "Accords updated successfully.";
-
-                return RedirectToAction("Details", new { fragranceId = model.Id });
+                // Redirect to the fragrance details page or perform other actions
+                return RedirectToAction("Details", new { id = accordsModel.FragranceId });
             }
 
-            // If ModelState is not valid, return the view with the model to display validation errors
-            return View(model);
+            // If ModelState is not valid, handle validation errors
+            return View("EditAccords", accordsModel);
         }
+
+
 
 
     }

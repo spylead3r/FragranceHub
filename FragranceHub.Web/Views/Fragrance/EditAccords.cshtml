@@ -1,0 +1,45 @@
+﻿@model FragranceAccordsModel
+
+<h2>Edit Accords</h2>
+
+<form asp-action="EditAccords" asp-route-fragranceId="@Model.FragranceId" method="post">
+    <div class="form-group">
+        <label for="Woody">Woody:</label>
+        <input type="number" class="form-control" id="Woody" name="Woody" value="@Model.Woody" min="0" max="100" required>
+    </div>
+    <div class="form-group">
+        <label for="Citrus">Citrus:</label>
+        <input type="number" class="form-control" id="Citrus" name="Citrus" value="@Model.Citrus" min="0" max="100" required>
+    </div>
+    <div class="form-group">
+        <label for="Floral">Floral:</label>
+        <input type="number" class="form-control" id="Floral" name="Floral" value="@Model.Floral" min="0" max="100" required>
+    </div>
+    <div class="form-group">
+        <label for="Spicy">Spicy:</label>
+        <input type="number" class="form-control" id="Spicy" name="Spicy" value="@Model.Spicy" min="0" max="100" required>
+    </div>
+    <div class="form-group">
+        <label for="Fruity">Fruity:</label>
+        <input type="number" class="form-control" id="Fruity" name="Fruity" value="@Model.Fruity" min="0" max="100" required>
+    </div>
+    <div class="form-group">
+        <label for="Aromatic">Aromatic:</label>
+        <input type="number" class="form-control" id="Aromatic" name="Aromatic" value="@Model.Aromatic" min="0" max="100" required>
+    </div>
+    <div class="form-group">
+        <label for="Green">Green:</label>
+        <input type="number" class="form-control" id="Green" name="Green" value="@Model.Green" min="0" max="100" required>
+    </div>
+    <div class="form-group">
+        <label for="Musky">Musky:</label>
+        <input type="number" class="form-control" id="Musky" name="Musky" value="@Model.Musky" min="0" max="100" required>
+    </div>
+    <div class="form-group">
+        <label for="Herbal">Herbal:</label>
+        <input type="number" class="form-control" id="Herbal" name="Herbal" value="@Model.Herbal" min="0" max="100" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Accords</button>
+</form>
+

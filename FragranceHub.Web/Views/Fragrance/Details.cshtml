@@ -1,5 +1,6 @@
 ﻿@model FragranceDetailsViewModel
 
+
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -10,11 +11,12 @@
                 <p>Category: @Model.Category</p>
                 <p>Price: @Model.Price</p>
                 <p>Description: @Model.Description</p>
-               
-                @if (User.IsAdmin())
-                {
-                <a class="btn btn-primary" href="@Url.Action("SetAccords", new { fragranceId = Model.Id })">Set Accords</a>
-                }
+
+
+            @if (User.IsAdmin())
+            {
+                <a class="primary-btn" asp-action="EditAccords" asp-controller="Fragrance" asp-route-fragranceId="@Model.Id">Edit Accords</a>
+            }
             
             
                 <button class="add-to-wishlist-btn" data-fragrance-id="@Model.Id">

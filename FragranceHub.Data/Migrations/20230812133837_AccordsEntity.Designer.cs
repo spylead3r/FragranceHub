@@ -4,6 +4,7 @@ using FragranceHub.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FragranceHub.Data.Migrations
 {
     [DbContext(typeof(FragranceHubDbContext))]
-    partial class FragranceHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230812133837_AccordsEntity")]
+    partial class AccordsEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,44 +23,6 @@ namespace FragranceHub.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("FragranceHub.Data.Models.Accords", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Aromatic")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Citrus")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Floral")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Fruity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Green")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Herbal")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Musky")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Spicy")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Woody")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Accords");
-                });
 
             modelBuilder.Entity("FragranceHub.Data.Models.ApplicationUser", b =>
                 {
@@ -213,7 +177,7 @@ namespace FragranceHub.Data.Migrations
                     b.Property<DateTime>("PublishedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 12, 14, 6, 28, 228, DateTimeKind.Utc).AddTicks(8348));
+                        .HasDefaultValue(new DateTime(2023, 8, 12, 13, 38, 36, 620, DateTimeKind.Utc).AddTicks(1050));
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -234,7 +198,7 @@ namespace FragranceHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("896f5f99-da2f-4128-b89f-e89ffeb00150"),
+                            Id = new Guid("7cf7737e-fc17-497b-b4bd-4635e9b6db51"),
                             CategoryId = 1,
                             Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
                             ImageUrl = "https://i.makeup.bg/r/rv/rvuuikzs9nz6.jpg",
@@ -244,21 +208,6 @@ namespace FragranceHub.Data.Migrations
                             Price = 620.00m,
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
-                });
-
-            modelBuilder.Entity("FragranceHub.Data.Models.FragranceAccords", b =>
-                {
-                    b.Property<Guid>("FragranceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AccordsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("FragranceId", "AccordsId");
-
-                    b.HasIndex("AccordsId");
-
-                    b.ToTable("FragranceAccords");
                 });
 
             modelBuilder.Entity("FragranceHub.Data.Models.Review", b =>
@@ -519,25 +468,6 @@ namespace FragranceHub.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FragranceHub.Data.Models.FragranceAccords", b =>
-                {
-                    b.HasOne("FragranceHub.Data.Models.Accords", "Accords")
-                        .WithMany()
-                        .HasForeignKey("AccordsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FragranceHub.Data.Models.Fragrance", "Fragrance")
-                        .WithMany("FragrancesAccords")
-                        .HasForeignKey("FragranceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Accords");
-
-                    b.Navigation("Fragrance");
-                });
-
             modelBuilder.Entity("FragranceHub.Data.Models.Review", b =>
                 {
                     b.HasOne("FragranceHub.Data.Models.Fragrance", "Fragrance")
@@ -669,8 +599,6 @@ namespace FragranceHub.Data.Migrations
 
             modelBuilder.Entity("FragranceHub.Data.Models.Fragrance", b =>
                 {
-                    b.Navigation("FragrancesAccords");
-
                     b.Navigation("Reviews");
                 });
 
