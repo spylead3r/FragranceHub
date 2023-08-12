@@ -5,6 +5,6 @@ namespace FragranceHub.Web.ViewModels.Wishlist
 {
     public class WishlistViewModel
     {
-        public List<FragranceAllViewModel> Fragrances { get; set; }
+        public List<FragranceAllViewModel>? Fragrances { get; set; }
     }
 }

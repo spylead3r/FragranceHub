@@ -29,7 +29,7 @@ namespace FragranceHub.Web.Controllers
         public async Task<IActionResult> AddToFavorites(Guid fragranceId)
         {
             string userId = User.GetId()!; // Get the current user's ID
-            bool success = await wishlistService.AddToFavorites(fragranceId, userId);
+            bool success = await wishlistService.AddToFavoritesAsync(fragranceId, userId);
 
             if (success)
             {
@@ -52,7 +52,7 @@ namespace FragranceHub.Web.Controllers
 
             try
             {
-                await wishlistService.RemoveFromFavorites(fragranceId, userId);
+                await wishlistService.RemoveFromFavoritesAsync(fragranceId, userId);
 
 
                 return RedirectToAction("All","Fragrance"); 
@@ -70,7 +70,7 @@ namespace FragranceHub.Web.Controllers
         public async Task<IActionResult> Wishlist()
         {
             var userId = User.GetId();
-            var fragrancesInWishlist = await wishlistService.GetFragrancesInWishlist(userId!);
+            var fragrancesInWishlist = await wishlistService.GetFragrancesInWishlistAsync(userId!);
 
             var viewModel = new WishlistViewModel
             {

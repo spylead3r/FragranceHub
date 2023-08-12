@@ -232,5 +232,45 @@ namespace FragranceHub.Web.Controllers
                 return this.NotFound();
             }
         }
+
+        public async Task<IActionResult> SetAccords()
+        {
+            FragranceFormModel formModel = new FragranceFormModel()
+            {
+                Categories = await this.categoryService.AllCategoriesAsync()
+            };
+
+            return this.View(formModel);
+        }
+
+
+
+
+        [Authorize(Roles = "Admin")] // Restrict access to admin users
+        public async Task<IActionResult> SetAccords(string fragranceId)
+        {
+            var fragrance = await fragranceService.GetDetailsByIdAsync(fragranceId);
+            return View(fragrance);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> SetAccords(FragranceDetailsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Update the fragrance accords in your service layer
+                await fragranceService.UpdateFragranceAccordsAsync(model.Id, model.Accords);
+
+                TempData[SuccessMessage] = "Accords updated successfully.";
+
+                return RedirectToAction("Details", new { fragranceId = model.Id });
+            }
+
+            // If ModelState is not valid, return the view with the model to display validation errors
+            return View(model);
+        }
+
+
     }
 }

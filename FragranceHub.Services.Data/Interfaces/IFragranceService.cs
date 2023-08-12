@@ -25,5 +25,8 @@ namespace FragranceHub.Services.Data.Interfaces
         
         Task DeleteFragranceByIdAsync(string houseId);
 
+        Task UpdateFragranceAccordsAsync(string fragranceId, FragranceAccordsModel accords);
+
+
     }
 }

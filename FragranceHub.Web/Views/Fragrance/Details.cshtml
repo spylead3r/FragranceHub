@@ -11,7 +11,12 @@
                 <p>Price: @Model.Price</p>
                 <p>Description: @Model.Description</p>
                
-
+                @if (User.IsAdmin())
+                {
+                <a class="btn btn-primary" href="@Url.Action("SetAccords", new { fragranceId = Model.Id })">Set Accords</a>
+                }
+            
+            
                 <button class="add-to-wishlist-btn" data-fragrance-id="@Model.Id">
                     Add to Wishlist
                 </button>

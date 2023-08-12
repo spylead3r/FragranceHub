@@ -4,7 +4,7 @@
     {
         public string Description { get; set; } = null!;
 
-        //public FragranceAccordsModel? Accords { get; set; }
+        public FragranceAccordsModel? Accords { get; set; }
 
     }
 }

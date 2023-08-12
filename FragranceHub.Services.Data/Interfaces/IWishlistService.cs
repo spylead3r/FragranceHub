@@ -9,10 +9,10 @@ namespace FragranceHub.Services.Data.Interfaces
 {
     public interface IWishlistService
     {
-        Task<bool> AddToFavorites(Guid fragranceId, string userId);
+        Task<bool> AddToFavoritesAsync(Guid fragranceId, string userId);
 
-        Task<List<FragranceAllViewModel>> GetFragrancesInWishlist(string userId);
+        Task<List<FragranceAllViewModel>> GetFragrancesInWishlistAsync(string userId);
 
-        Task<bool> RemoveFromFavorites(Guid fragranceId, string userId);
+        Task<bool> RemoveFromFavoritesAsync(Guid fragranceId, string userId);
     }
 }

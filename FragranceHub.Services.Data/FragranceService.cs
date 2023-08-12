@@ -167,6 +167,7 @@ namespace FragranceHub.Services.Data
         {
             Fragrance fragrance = await dbContext
                 .Fragrances
+                .Include(f => f.Category)
                 .Where(f => f.IsActive)
                 .FirstAsync(f => f.Id.ToString() == fragranceId);
 
@@ -174,10 +175,28 @@ namespace FragranceHub.Services.Data
             {
                 Id = fragrance.Id.ToString(),
                 Name = fragrance.Name,
+                Category = fragrance.Category.Name,
                 ImageUrl = fragrance.ImageUrl,
                 Price = fragrance.Price,
                 Description = fragrance.Description,
             };
+        }
+
+        public async Task UpdateFragranceAccordsAsync(string fragranceId, FragranceAccordsModel accords)
+        {
+
+            // Fetch the fragrance from the database
+            var fragrance = await dbContext.Fragrances.FirstOrDefaultAsync(f => f.Id.ToString() == fragranceId);
+
+            if (fragrance != null)
+            {
+                // Update the accords
+                //fragrance.Accords = accords;
+
+                // Save changes
+                await dbContext.SaveChangesAsync();
+            }
+
         }
     }
 }

@@ -20,7 +20,7 @@ namespace FragranceHub.Services.Data
             this.dbContext = dbContext;
         }
 
-        public async Task<bool> AddToFavorites(Guid fragranceId, string userId)
+        public async Task<bool> AddToFavoritesAsync(Guid fragranceId, string userId)
         {
 
                 ApplicationUser? user = await dbContext
@@ -66,7 +66,7 @@ namespace FragranceHub.Services.Data
  
         }
 
-        public async Task<bool> RemoveFromFavorites(Guid fragranceId, string userId)
+        public async Task<bool> RemoveFromFavoritesAsync(Guid fragranceId, string userId)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace FragranceHub.Services.Data
         }
 
 
-        public async Task<List<FragranceAllViewModel>> GetFragrancesInWishlist(string userId)
+        public async Task<List<FragranceAllViewModel>> GetFragrancesInWishlistAsync(string userId)
         {
             var wishlist = await dbContext.Wishlists
                 .Include(w => w.Fragrances)
