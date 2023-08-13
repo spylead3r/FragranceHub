@@ -33,7 +33,7 @@ namespace FragranceHub.Data.Models
 
         public bool IsActive { get; set; }
 
-        public DateTime PublishedOn { get; set; }
+        public DateTime PublishedOnDate { get; set; }
 
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; } = null!;

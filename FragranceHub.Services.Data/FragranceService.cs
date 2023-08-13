@@ -192,28 +192,44 @@ namespace FragranceHub.Services.Data
 
             if (fragrance != null)
             {
-                var fragranceAccords = fragrance.FragrancesAccords.FirstOrDefault();
+                // Create a new FragranceAccords entity
+                var newFragranceAccords = new FragranceAccords();
 
-                if (fragranceAccords == null)
+                // Create a new Accords entity and set its properties
+                var newAccordsEntity = new Accords
                 {
-                    fragranceAccords = new FragranceAccords();
-                    fragrance.FragrancesAccords.Add(fragranceAccords);
+                    Woody = accords.Woody,
+                    Citrus = accords.Citrus,
+                    Spicy = accords.Spicy,
+                    Aromatic = accords.Aromatic,
+                    Floral = accords.Floral,
+                    Fruity = accords.Fruity,
+                    Green = accords.Green,
+                    Herbal = accords.Herbal,
+                    Musky = accords.Musky
+                };
+
+                // Assign the new Accords entity to the new FragranceAccords entity
+                newFragranceAccords.Accords = newAccordsEntity;
+
+                // Remove the existing FragranceAccords entity
+                if (fragrance.FragrancesAccords.Any())
+                {
+                    var existingFragranceAccords = fragrance.FragrancesAccords.First();
+                    dbContext.FragranceAccords.Remove(existingFragranceAccords);
                 }
 
-                var accordsEntity = fragranceAccords.Accords;
-                accordsEntity.Woody = accords.Woody;
-                accordsEntity.Citrus = accords.Citrus;
-                accordsEntity.Spicy = accords.Spicy;
-                accordsEntity.Aromatic = accords.Aromatic;
-                accordsEntity.Floral = accords.Floral;
-                accordsEntity.Fruity = accords.Fruity;
-                accordsEntity.Green = accords.Green;
-                accordsEntity.Herbal = accords.Herbal;
-                accordsEntity.Musky = accords.Musky;
+                // Add the new FragranceAccords entity to the Fragrance's collection
+                fragrance.FragrancesAccords.Add(newFragranceAccords);
 
+                // Save changes
                 await dbContext.SaveChangesAsync();
             }
         }
+
+
+
+
 
 
 

@@ -10,7 +10,7 @@ namespace FragranceHub.Data.Configurations
         public void Configure(EntityTypeBuilder<Fragrance> builder)
         {
             builder
-                .Property(h => h.PublishedOn)
+                .Property(f => f.PublishedOnDate)
                 .HasDefaultValue(DateTime.UtcNow);
 
             builder

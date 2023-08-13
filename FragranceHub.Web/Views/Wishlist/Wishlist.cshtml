@@ -1,92 +1,146 @@
 ﻿@model WishlistViewModel
 
-<h2>Your Wishlist</h2>
+<style>
+    .wishlist-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 40px;
+    }
 
+    .wishlist-header {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
 
+    .fragrance-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%; /* Make the card take up the entire height */
+        border: 1px solid #e0e0e0; /* Add a border for separation */
+        border-radius: 8px;
+        overflow: hidden; /* Hide any overflowing content */
+    }
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+    }
 
+    .flip-card-inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-<partial name="_NotificationsPartial" />
+    .flip-card-front,
+    .flip-card-back {
+        width: 100%;
+        text-align: center;
+    }
 
-@if (Model.Fragrances.Any())
-{
-    <div class="row">
-        @foreach (var fragrance in Model.Fragrances)
-        {
-            <div class="col-lg-4 col-md-6 col-sm-12 fragrance-card">
-                <div class="flip-card fragrance-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="@fragrance.ImageUrl" alt="@fragrance.Name" style="width:300px;height:300px;">
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>@fragrance.Name</h3>
-                            <p>Price: @fragrance.Price</p>
-                            <button class="remove-from-wishlist-btn" data-fragrance-id="@fragrance.Id">
-                                Remove from Wishlist
-                            </button>
-                            <button class="details-btn btn btn-secondary">Details</button>
+    .fragrance-title {
+        font-size: 20px;
+        margin: 10px 0;
+    }
+
+    .fragrance-price {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .remove-from-wishlist-btn,
+    .details-btn {
+        margin-top: 10px;
+    }
+</style>
+
+<div class="wishlist-container">
+    <h2 class="wishlist-header">Your Wishlist</h2>
+
+    <partial name="_NotificationsPartial" />
+
+    @if (Model.Fragrances.Any())
+    {
+        <div class="row">
+            @foreach (var fragrance in Model.Fragrances)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card fragrance-card">
+                        <div class="card-body">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="@fragrance.ImageUrl" alt="@fragrance.Name" class="img-fluid fragrance-image rounded">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h3 class="fragrance-title">@fragrance.Name</h3>
+                                        <p class="fragrance-price">Price: @fragrance.Price</p>
+                                        <button class="btn btn-danger remove-from-wishlist-btn" data-fragrance-id="@fragrance.Id">
+                                            Remove from Wishlist
+                                        </button>
+                                        <button class="btn btn-secondary details-btn">Details</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
-}
-else
-{
-    <p>Your wishlist is empty.</p>
-}
+            }
+        </div>
+    }
+    else
+    {
+        <p>Your wishlist is empty.</p>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <script>
-    document.addEventListener("DOMContentLoaded", async function () {
-        const removeButtons = document.querySelectorAll(".remove-from-wishlist-btn");
-        removeButtons.forEach(button => {
-            button.addEventListener("click", async function () {
-                const fragranceId = button.getAttribute("data-fragrance-id");
+    $(document).ready(function () {
+        $(".remove-from-wishlist-btn").click(async function () {
+            const fragranceId = $(this).data("fragrance-id");
 
-                // Output to the browser console to track the progress
-                console.log("Button clicked for fragrance ID:", fragranceId);
-
-                try {
-                    const response = await fetch(`/Wishlist/Remove?fragranceId=${fragranceId}`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    });
-
-                    if (response.ok) {
-                        button.classList.remove("active");
-
-                        toastr.success('The fragrance was successfully removed.');
-                    } else {
-                        console.error("Failed to remove fragrance from wishlist.");
+            try {
+                const response = await fetch(`/Wishlist/Remove?fragranceId=${fragranceId}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
                     }
-                } catch (error) {
+                });
 
-                    console.error("An error occurred while removing fragrance from wishlist:", error);
+                if (response.ok) {
+                    $(this).removeClass("active");
+
+                    toastr.success("The fragrance was successfully removed.");
+                } else {
+                    console.error("Failed to remove fragrance from wishlist.");
                 }
-            });
+            } catch (error) {
+                console.error("An error occurred while removing fragrance from wishlist:", error);
+            }
         });
 
         // Toastr initialization
         toastr.options = {
             closeButton: true,
             preventDuplicates: true,
-            positionClass: 'toast-bottom-right',
-            showMethod: 'slideDown',
+            positionClass: "toast-bottom-right",
+            showMethod: "slideDown",
             timeOut: 4000
         };
-
-        // Display a Toastr message
     });
 </script>
-
-
-
-
-

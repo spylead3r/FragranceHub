@@ -226,6 +226,12 @@ namespace FragranceHub.Web.Controllers
                 FragranceDetailsViewModel viewModel = await this.fragranceService
                     .GetDetailsByIdAsync(id);
 
+                // Fetch the accords data for the fragrance
+                var accords = await fragranceService.GetAccordsByFragranceIdAsync(id);
+
+                // Set the accords data to the Accords property of the viewmodel
+                viewModel.Accords = accords;
+
                 return View(viewModel);
             }
             catch (Exception)
@@ -269,6 +275,50 @@ namespace FragranceHub.Web.Controllers
             // If ModelState is not valid, handle validation errors
             return View("EditAccords", accordsModel);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> UploadAccords(FragranceAccordsModel accordsModel)
+        {
+            if (ModelState.IsValid)
+            {
+                // Update the accords for the fragrance
+                await fragranceService.UpdateFragranceAccordsAsync(accordsModel.FragranceId, accordsModel);
+
+                // Redirect to the fragrance details page or perform other actions
+                return RedirectToAction("Details", new { id = accordsModel.FragranceId });
+            }
+
+            // If ModelState is not valid, handle validation errors
+            return View("UploadAccords", accordsModel);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditAccords(FragranceAccordsModel accordsModel)
+        {
+            if (ModelState.IsValid)
+            {
+                // Update the accords for the fragrance
+                await fragranceService.UpdateFragranceAccordsAsync(accordsModel.FragranceId, accordsModel);
+
+                // Fetch the updated accords
+                var updatedAccords = await fragranceService.GetAccordsByFragranceIdAsync(accordsModel.FragranceId);
+
+                // Update the Accords property of the FragranceDetailsViewModel
+                var detailsViewModel = new FragranceDetailsViewModel
+                {
+                    // Initialize other properties here
+                    Accords = updatedAccords
+                };
+
+                return RedirectToAction("Details", detailsViewModel); // Pass the updated view model
+            }
+
+            // If ModelState is not valid, handle validation errors
+            return View("EditAccords", accordsModel);
+        }
+
 
 
 
