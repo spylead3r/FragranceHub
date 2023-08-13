@@ -25,8 +25,8 @@ namespace FragranceHub.Web.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> AddToFavorites(Guid fragranceId)
+       
+        public async Task<IActionResult> AddToFavorites(string fragranceId)
         {
             string userId = User.GetId()!; // Get the current user's ID
             bool success = await wishlistService.AddToFavoritesAsync(fragranceId, userId);
@@ -44,8 +44,8 @@ namespace FragranceHub.Web.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Remove(Guid fragranceId)
+        [HttpGet]
+        public async Task<IActionResult> Remove(string fragranceId)
         {
             string userId = User.GetId()!;
            
@@ -55,7 +55,7 @@ namespace FragranceHub.Web.Controllers
                 await wishlistService.RemoveFromFavoritesAsync(fragranceId, userId);
 
 
-                return RedirectToAction("All","Fragrance"); 
+                return RedirectToAction("Wishlist","Wishlist"); 
 
             }
             catch (Exception)

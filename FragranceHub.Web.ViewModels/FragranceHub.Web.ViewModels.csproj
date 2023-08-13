@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FragranceHub.Common\FragranceHub.Common.csproj" />
+    <ProjectReference Include="..\FragranceHub.Data.Models\FragranceHub.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -147,14 +147,14 @@
         right: 10px;
         background: none;
         border: none;
-        color: #e74c3c; /* Change color as needed */
+        color: #e74c3c; 
         font-size: 24px;
         cursor: pointer;
         transition: color 0.3s;
     }
 
     .add-to-wishlist-btn:hover {
-        color: #c0392b; /* Change color on hover */
+        color: #c0392b; 
     }
 
      
@@ -287,13 +287,17 @@
                             </div>
                             <div class="flip-card-back">
                                 <h1>@fragrance.Name</h1>
-                                <p>Price: @fragrance.Price</p>
+                                <p>Price: @fragrance.Price$</p>
                                 <button class="add-to-wishlist-btn" data-fragrance-id="@fragrance.Id">
                                     <div class="heart-icon-container">
                                         <i class="fas fa-heart"></i>
                                     </div>
                                 </button>
-                                <button class="add-to-cart-btn">Add to Cart</button>
+                                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                    <input type="hidden" name="fragranceId" value="@fragrance.Id" />
+                                    <input type="hidden" name="quantity" value="1" /> <!-- You can adjust the quantity as needed -->
+                                    <button class="add-to-cart-btn" type="submit">Add to Cart</button>
+                                </form>
                                 <partial name="_FragrancePartial" model="@fragrance" />
                             </div>
                         </div>
@@ -335,7 +339,7 @@
                         });
                         if (response.ok) {
 
-                            toastr.success('The fragrance was successfully removed.');
+                            toastr.success('The fragrance was successfully added.');
                         } else {
 
                             console.error("Failed to add fragrance to wishlist.");

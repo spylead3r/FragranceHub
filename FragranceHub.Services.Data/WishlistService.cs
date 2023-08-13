@@ -20,45 +20,44 @@ namespace FragranceHub.Services.Data
             this.dbContext = dbContext;
         }
 
-        public async Task<bool> AddToFavoritesAsync(Guid fragranceId, string userId)
+        public async Task<bool> AddToFavoritesAsync(string fragranceId, string userId)
         {
 
                 ApplicationUser? user = await dbContext
                 .Users
-                .FirstOrDefaultAsync(u => u.Id.ToString() == userId);
+                .FirstOrDefaultAsync(u => u.Id.ToString().ToLower() == userId.ToLower());
 
                 if (user == null)
                 {
-                    return false; // User not found, return false
+                    return false; 
                 }
 
-                // Check if the fragrance is already in the user's wishlist
+             
                 var wishlist = await dbContext.Wishlists
                     .Include(w => w.Fragrances)
-                    .SingleOrDefaultAsync(w => w.UserId == user.Id);
+                    .SingleOrDefaultAsync(w => w.UserId.ToString().ToLower() == user.Id.ToString().ToLower());
 
                 if (wishlist == null)
                 {
-                    // Create a new wishlist for the user if it doesn't exist
                     wishlist = new Wishlist
                     {
                         UserId = user.Id
                     };
 
                     dbContext.Wishlists.Add(wishlist);
-                    await dbContext.SaveChangesAsync(); // Save changes to the database
+                    await dbContext.SaveChangesAsync(); 
                 }
 
-                // Check if the fragrance is already in the wishlist
-                var fragranceExistsInWishlist = wishlist.Fragrances.Any(f => f.Id == fragranceId);
+                
+                var fragranceExistsInWishlist = wishlist.Fragrances.Any(f => f.Id.ToString().ToLower() == fragranceId.ToLower());
 
                 if (!fragranceExistsInWishlist)
                 {
-                    var fragrance = await dbContext.Fragrances.FindAsync(fragranceId);
+                    var fragrance = await dbContext.Fragrances.FirstOrDefaultAsync(f => f.Id.ToString().ToLower() == fragranceId.ToLower());
                     if (fragrance != null)
                     {
                         wishlist.Fragrances.Add(fragrance);
-                        await dbContext.SaveChangesAsync(); // Save changes to the database
+                        await dbContext.SaveChangesAsync(); 
                     }
                 }
 
@@ -66,10 +65,9 @@ namespace FragranceHub.Services.Data
  
         }
 
-        public async Task<bool> RemoveFromFavoritesAsync(Guid fragranceId, string userId)
+        public async Task<bool> RemoveFromFavoritesAsync(string fragranceId, string userId)
         {
-            try
-            {
+
                 ApplicationUser? user = await dbContext
                 .Users
                 .FirstOrDefaultAsync(u => u.Id.ToString() == userId);
@@ -77,19 +75,19 @@ namespace FragranceHub.Services.Data
 
                 if (user == null)
                 {
-                    return false; // User not found, return false
+                    return false; 
                 }
 
                 var wishlist = await dbContext.Wishlists
                     .Include(w => w.Fragrances)
-                    .SingleOrDefaultAsync(w => w.UserId.ToString() == userId);
+                    .SingleOrDefaultAsync(w => w.UserId.ToString().ToLower() == userId.ToLower());
 
                 if (wishlist == null)
                 {
                     return false; 
                 }
 
-                var fragrance = await dbContext.Fragrances.FindAsync(fragranceId);
+                var fragrance = await dbContext.Fragrances.FirstOrDefaultAsync(f => f.Id.ToString().ToLower() == fragranceId.ToLower());
 
                 if (fragrance != null && wishlist.Fragrances.Contains(fragrance))
                 {
@@ -101,11 +99,8 @@ namespace FragranceHub.Services.Data
                 {
                     return false; 
                 }
-            }
-            catch (Exception)
-            {
-                return false; 
-            }
+            
+
         }
 
 
@@ -113,7 +108,7 @@ namespace FragranceHub.Services.Data
         {
             var wishlist = await dbContext.Wishlists
                 .Include(w => w.Fragrances)
-                .FirstOrDefaultAsync(w => w.UserId.ToString() == userId);
+                .FirstOrDefaultAsync(w => w.UserId.ToString().ToLower() == userId.ToLower());
 
             if (wishlist != null)
             {

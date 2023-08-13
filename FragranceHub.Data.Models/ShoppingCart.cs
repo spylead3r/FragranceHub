@@ -10,6 +10,11 @@ namespace FragranceHub.Data.Models
 {
     public class ShoppingCart
     {
+        public ShoppingCart()
+        {
+            CartItems = new List<ShoppingCartItem>();
+        }
+
         [Key]
         public Guid Id { get; set; }
 
@@ -17,5 +22,7 @@ namespace FragranceHub.Data.Models
         public ApplicationUser User { get; set; } = null!;
 
         public decimal TotalPrice { get; set; }
+
+        public virtual ICollection<ShoppingCartItem> CartItems { get; set; }
     }
 }

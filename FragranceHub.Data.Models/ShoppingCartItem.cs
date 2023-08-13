@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace FragranceHub.Data.Models
 {
@@ -13,7 +13,6 @@ namespace FragranceHub.Data.Models
 
         public Guid CartId { get; set; }
         public virtual ShoppingCart ShoppingCart { get; set; } = null!;
-
 
         public int Quantity { get; set; }
     }

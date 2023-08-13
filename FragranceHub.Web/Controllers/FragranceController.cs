@@ -216,7 +216,7 @@ namespace FragranceHub.Web.Controllers
 
             if (!fragranceExist)
             {
-                this.TempData[ErrorMessage] = "The fragrance is currently unavailable!";
+                this.TempData[SuccessMessage] = "The fragrance is currently unavailable!";
 
                 return this.RedirectToAction("All", "Fragrance");
             }
@@ -226,10 +226,8 @@ namespace FragranceHub.Web.Controllers
                 FragranceDetailsViewModel viewModel = await this.fragranceService
                     .GetDetailsByIdAsync(id);
 
-                // Fetch the accords data for the fragrance
                 var accords = await fragranceService.GetAccordsByFragranceIdAsync(id);
 
-                // Set the accords data to the Accords property of the viewmodel
                 viewModel.Accords = accords;
 
                 return View(viewModel);
@@ -249,7 +247,7 @@ namespace FragranceHub.Web.Controllers
 
             if (!fragranceExist)
             {
-                TempData[ErrorMessage] = "The fragrance is currently unavailable!";
+                TempData[SuccessMessage] = "The fragrances is set!";
                 return RedirectToAction("All", "Fragrance");
             }
 
