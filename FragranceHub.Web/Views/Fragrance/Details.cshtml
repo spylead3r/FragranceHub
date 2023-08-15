@@ -1,5 +1,7 @@
 ﻿@model FragranceDetailsViewModel
 
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -94,6 +96,31 @@
     .progress-bar-herbal {
         background-color: olive;
     }
+
+        .fragrance-info {
+        text-align: center; 
+        margin-top: 20px;
+    }
+
+
+    .heart-icon-container {
+        font-size: 24px;
+        color: red;
+        display: inline-block;
+        padding: 5px;
+        border-radius: 50%;
+        background-color: white; 
+        border: 2px solid #ccc; 
+        transition: transform 0.3s, color 0.3s, background-color 0.3s, border-color 0.3s;
+        cursor: pointer;
+    }
+
+    .heart-icon-container.active {
+        color: red; 
+        transform: scale(1.1);
+        background-color: red; 
+        border-color: red; 
+    }
    
 </style>
 
@@ -181,14 +208,13 @@
         </div>
     </div>
 </div>
-        <div class="fragrance-info">
+        <div class="fragrance-info text-center">
             <p class="fragrance-category">Category: @Model.Category</p>
             <p class="fragrance-price">Price: @Model.Price$</p>
             <p class="fragrance-description">@Model.Description</p>
 
              @if (User.IsAdmin())
             {
-                <button class="primary-btn" asp-action="EditAccords" asp-controller="Fragrance" asp-route-fragranceId="@Model.Id">Edit Accords</button>
                 <a class="primary-btn" asp-action="EditAccords" asp-controller="Fragrance" asp-route-fragranceId="@Model.Id">Edit Accords</a>
             }
 
@@ -198,7 +224,7 @@
 
     <button class="add-to-wishlist-btn" data-fragrance-id="@Model.Id">
         <div class="heart-icon-container">
-            <button class="btn btn-primary">AddToWishList</button>
+            <i class="fas fa-heart"></i>
         </div>
     </button>
             <a class="details-btn btn btn-success"

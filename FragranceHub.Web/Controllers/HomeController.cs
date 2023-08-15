@@ -6,6 +6,8 @@
 
     using ViewModels.Home;
 
+    using static FragranceHub.Common.GeneralAppConstants;
+
     public class HomeController : Controller
     {
         private readonly IFragranceService fragranceService;
@@ -17,6 +19,11 @@
 
         public async Task<IActionResult> Index()
         {
+            if (this.User.IsInRole(AdminRoleName))
+            {
+                return this.RedirectToAction("Index", "Home", new { Area = AdminAreaName });
+            }
+
             return View();
         }
 

@@ -3,12 +3,14 @@ using FragranceHub.Services.Data.Interfaces;
 using FragranceHub.Web.Infrastructure.Extensions;
 using FragranceHub.Web.ViewModels.Cart;
 using FragranceHub.Web.ViewModels.Category;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using static FragranceHub.Common.NotificationMessagesConstants;
 
 namespace FragranceHub.Web.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
 

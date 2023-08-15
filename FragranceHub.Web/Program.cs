@@ -36,6 +36,11 @@ namespace FragranceHub.Web
 
             builder.Services.AddApplicationServices(typeof(IFragranceService));
 
+            builder.Services.ConfigureApplicationCookie(cfg =>
+            {
+                cfg.AccessDeniedPath = "/Home/Error/401";
+            });
+
             builder.Services.AddControllersWithViews();
 
             WebApplication app = builder.Build();
@@ -66,8 +71,22 @@ namespace FragranceHub.Web
                 app.SeedAdministrator(DevelopmentAdminEmail);
             }
 
-            app.MapDefaultControllerRoute();
-            app.MapRazorPages();
+            app.UseEndpoints(config =>
+            {
+                config.MapControllerRoute(
+                    name: "areas",
+                    pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                config.MapControllerRoute(
+                    name: "ProtectingUrlRoute",
+                    pattern: "/{controller}/{action}/{id}/{information}",
+                    defaults: new { Controller = "Category", Action = "Details" });
+
+                config.MapDefaultControllerRoute();
+                config.MapRazorPages();
+            });
+
 
             app.Run();
         }

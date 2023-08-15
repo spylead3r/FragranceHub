@@ -3,11 +3,6 @@ using FragranceHub.Services.Data.Interfaces;
 using FragranceHub.Web.Data;
 using FragranceHub.Web.ViewModels.Fragrance;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FragranceHub.Services.Data
 {
