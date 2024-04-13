@@ -76,13 +76,6 @@ namespace FragranceHub.Services.Data
             };
         }
 
-        public async Task<IEnumerable<Fragrance>> SearchByKeywordAsync(string keyword)
-        {
-            return await dbContext.Fragrances
-                                 .Where(f => f.Name.Contains(keyword))
-                                 .ToListAsync();
-        }
-
         public async Task CreateAsync(FragranceFormModel formModel)
         {
             Fragrance fragrance = new Fragrance()
@@ -190,6 +183,7 @@ namespace FragranceHub.Services.Data
         }
 
 
+        //Accords
         public async Task UpdateFragranceAccordsAsync(string fragranceId, FragranceAccordsModel accords)
         {
             var fragrance = await dbContext.Fragrances
@@ -234,6 +228,12 @@ namespace FragranceHub.Services.Data
         }
 
 
+
+
+
+
+
+        //new
         public async Task<FragranceAccordsModel> GetAccordsByFragranceIdAsync(string fragranceId)
         {
             var fragranceAccords = await dbContext.FragranceAccords
@@ -278,5 +278,8 @@ namespace FragranceHub.Services.Data
                 Musky = fragranceAccords.Accords.Musky
             };
         }
+
+
+
     }
 }

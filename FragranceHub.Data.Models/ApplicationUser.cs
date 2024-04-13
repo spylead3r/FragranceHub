@@ -16,11 +16,11 @@ namespace FragranceHub.Data.Models
 
         [Required]
         [MaxLength(FirstNameMaxLength)]
-        public string FirstName { get; set; } = null!;
+        public string FirstName { get; set; }
 
         [Required]
         [MaxLength(LastNameMaxLength)]
-        public string LastName { get; set; } = null!;
+        public string LastName { get; set; }
         public virtual ICollection<Fragrance> OwnedFragrances { get; set; }
 
         public virtual ICollection<Review> PostedReviews { get; set; }

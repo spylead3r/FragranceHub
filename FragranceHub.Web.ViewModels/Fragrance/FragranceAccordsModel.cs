@@ -4,7 +4,7 @@ namespace FragranceHub.Web.ViewModels.Fragrance
     public class FragranceAccordsModel
     {
 
-        public string FragranceId { get; set; } = null!;
+        public string FragranceId { get; set; }
 
         public int Woody { get; set; }
         public int Citrus { get; set; }
