@@ -316,13 +316,10 @@ namespace FragranceHub.Web.Controllers
             // If ModelState is not valid, handle validation errors
             return View("EditAccords", accordsModel);
         }
-        
 
-        public async Task<IActionResult> Search(string keyword)
-        {
-            var fragrances = await fragranceService.SearchByKeywordAsync(keyword);
 
-            return View(fragrances);  
-        }
+
+
+
     }
 }

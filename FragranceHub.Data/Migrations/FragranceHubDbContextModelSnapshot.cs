@@ -213,7 +213,7 @@ namespace FragranceHub.Data.Migrations
                     b.Property<DateTime>("PublishedOnDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 9, 19, 35, 24, 442, DateTimeKind.Utc).AddTicks(9123));
+                        .HasDefaultValue(new DateTime(2023, 8, 13, 1, 46, 32, 67, DateTimeKind.Utc).AddTicks(6387));
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -234,10 +234,10 @@ namespace FragranceHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4c4798e1-c5b1-414b-a903-6b3ff20b35a2"),
+                            Id = new Guid("25a8792e-1f1d-4128-af62-23bd68e50481"),
                             CategoryId = 1,
                             Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
-                            ImageUrl = "https://cdn.notinoimg.com/list_2k//creed/3508441104662_01-o__230320.jpg",
+                            ImageUrl = "https://i.makeup.bg/r/rv/rvuuikzs9nz6.jpg",
                             IsActive = false,
                             IsApproved = true,
                             Name = "Creed Aventus",

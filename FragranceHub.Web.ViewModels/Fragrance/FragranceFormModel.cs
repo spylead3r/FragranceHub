@@ -12,7 +12,6 @@ namespace FragranceHub.Web.ViewModels.Fragrance
         {
             Categories = new HashSet<FragranceSelectCategoryFormModel>();
         }
-
         [Required]
         [StringLength(FragranceNameMaxLength, MinimumLength = FragranceNameMinLength)]
         public string Name { get; set; } = null!;

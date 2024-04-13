@@ -15,8 +15,6 @@ namespace FragranceHub.Services.Data.Interfaces
 
         Task<bool> ExistsByIdAsync(string fragranceId);
 
-        Task<IEnumerable<Fragrance>> SearchByKeywordAsync(string keyword);
-
         Task<FragranceFormModel> GetFragranceForEditByIdAsync(string fragranceId);
 
         Task EditFragranceByIdAndFormModelAsync(string fragranceId, FragranceFormModel formModel);
