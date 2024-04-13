@@ -4,6 +4,7 @@ using FragranceHub.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FragranceHub.Data.Migrations
 {
     [DbContext(typeof(FragranceHubDbContext))]
-    partial class FragranceHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240409192055_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -213,7 +215,7 @@ namespace FragranceHub.Data.Migrations
                     b.Property<DateTime>("PublishedOnDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 9, 19, 35, 24, 442, DateTimeKind.Utc).AddTicks(9123));
+                        .HasDefaultValue(new DateTime(2024, 4, 9, 19, 20, 55, 216, DateTimeKind.Utc).AddTicks(7996));
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -234,10 +236,10 @@ namespace FragranceHub.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4c4798e1-c5b1-414b-a903-6b3ff20b35a2"),
+                            Id = new Guid("2df47298-132f-4769-9966-78e837adf367"),
                             CategoryId = 1,
                             Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
-                            ImageUrl = "https://cdn.notinoimg.com/list_2k//creed/3508441104662_01-o__230320.jpg",
+                            ImageUrl = "https://cdn.notinoimg.com/detail_zoom/creed/3508441001114_01n-o/creed-aventus___180419.jpg",
                             IsActive = false,
                             IsApproved = true,
                             Name = "Creed Aventus",

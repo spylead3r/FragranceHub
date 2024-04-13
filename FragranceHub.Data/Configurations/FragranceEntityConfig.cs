@@ -46,7 +46,7 @@ namespace FragranceHub.Data.Configurations
                 Name = "Creed Aventus",
                 Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
                 Price = 620.00m,
-                ImageUrl = "https://i.makeup.bg/r/rv/rvuuikzs9nz6.jpg",
+                ImageUrl = "https://cdn.notinoimg.com/list_2k//creed/3508441104662_01-o__230320.jpg",
                 CategoryId = 1,
                 IsApproved = true
             };
