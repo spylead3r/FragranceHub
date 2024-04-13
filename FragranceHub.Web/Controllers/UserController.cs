@@ -57,7 +57,7 @@ namespace FragranceHub.Web.Controllers
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
 
-                return View(model);
+                return View(model.Email);
             }
 
             await this.signInManager.SignInAsync(user, false);
