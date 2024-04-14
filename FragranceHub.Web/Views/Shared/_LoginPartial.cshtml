@@ -1,6 +1,9 @@
 ﻿@inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
 <style> 
     .navitem{
         color:white;
@@ -11,15 +14,16 @@
 @if (SignInManager.IsSignedIn(User))
 {
         
-    <li class="nav-item">
+    @* <li class="nav-item">
         <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello, @User.Identity?.Name!</a>
-    </li>
+    </li> *@
         @if (this.User.IsAdmin())
         {
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Fragrance" asp-action="Add">Add fragrance</a>
             </li>
         }
+
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button  type="submit" class="nav-link btn btn-link">Logout</button>
@@ -29,10 +33,7 @@
 else
 {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Register">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login" title="Login"><i class="fas fa-user"></i></a>
         </li>
 }
 </ul>

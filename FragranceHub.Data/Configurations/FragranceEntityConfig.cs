@@ -44,6 +44,19 @@ namespace FragranceHub.Data.Configurations
             {
                 Id = Guid.NewGuid(),
                 Name = "Creed Aventus",
+                Description = "",
+                Price = 620.00m,
+                ImageUrl = "https://cdn.notinoimg.com/list_2k//chanel/3145891073706_01-o__211007.jpg",
+                CategoryId = 1,
+                IsApproved = true
+            };
+
+            fragrances.Add(fragrance);
+
+            fragrance = new Fragrance()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Bleu De Chanel",
                 Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
                 Price = 620.00m,
                 ImageUrl = "https://cdn.notinoimg.com/list_2k//creed/3508441104662_01-o__230320.jpg",
@@ -52,6 +65,73 @@ namespace FragranceHub.Data.Configurations
             };
 
             fragrances.Add(fragrance);
+
+            fragrance = new Fragrance()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Bleu De Chanel",
+                Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
+                Price = 620.00m,
+                ImageUrl = "https://cdn.notinoimg.com/list_2k//creed/3508441104662_01-o__230320.jpg",
+                CategoryId = 1,
+                IsApproved = true
+            };
+
+            fragrances.Add(fragrance);
+
+            fragrance = new Fragrance()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Bleu De Chanel",
+                Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
+                Price = 620.00m,
+                ImageUrl = "https://cdn.notinoimg.com/list_2k//creed/3508441104662_01-o__230320.jpg",
+                CategoryId = 1,
+                IsApproved = true
+            };
+
+            fragrances.Add(fragrance);
+
+            fragrance = new Fragrance()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Bleu De Chanel",
+                Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
+                Price = 620.00m,
+                ImageUrl = "https://cdn.notinoimg.com/list_2k//creed/3508441104662_01-o__230320.jpg",
+                CategoryId = 1,
+                IsApproved = true
+            };
+
+            fragrances.Add(fragrance);
+
+            fragrance = new Fragrance()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Bleu De Chanel",
+                Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
+                Price = 620.00m,
+                ImageUrl = "https://cdn.notinoimg.com/list_2k//creed/3508441104662_01-o__230320.jpg",
+                CategoryId = 1,
+                IsApproved = true
+            };
+
+            fragrances.Add(fragrance);
+
+            fragrance = new Fragrance()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Bleu De Chanel",
+                Description = "Creed Aventus is a timeless men's fragrance, exuding confidence and power. With notes of pineapple, blackcurrant, and musk, it evokes a bold and unforgettable aura.",
+                Price = 620.00m,
+                ImageUrl = "https://cdn.notinoimg.com/list_2k//creed/3508441104662_01-o__230320.jpg",
+                CategoryId = 1,
+                IsApproved = true
+            };
+
+            fragrances.Add(fragrance);
+
+
 
             return fragrances.ToArray();
         }

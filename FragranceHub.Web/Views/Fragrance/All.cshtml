@@ -1,7 +1,5 @@
 ﻿@model AllFragrancesQueryModel
 
-
-
 <!DOCTYPE html>
 
 <html>
@@ -15,7 +13,7 @@
     <partial name="_NotificationsPartial" />
 
 
-   
+
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -26,24 +24,23 @@
         }
 
         .mt-2, .my-2 {
-    margin-top: 2.5rem!important;
+            margin-top: 2.5rem !important;
         }
 
         .form-control {
-        background-color: #f8f9fa;
+            background-color: #f8f9fa;
         }
 
         h1 {
-             font-size: 48px;
+            font-size: 48px;
             font-family: cursive;
             color: whitesmoke;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             background: linear-gradient(to right, white, white);
             background-clip: text;
-            -webkit-background-clip: text; 
+            -webkit-background-clip: text;
             display: block;
-            text-align: center; 
-
+            text-align: center;
         }
 
         .flip-card {
@@ -67,7 +64,7 @@
         }
 
         .flip-card-front, .flip-card-back {
-             background-color: black; 
+            background-color: black;
             position: absolute;
             width: 100%;
             height: 100%;
@@ -76,39 +73,37 @@
         }
 
         .flip-card-front {
-                background-color: #bbb;
-        color: black;
-        border: none;
-        border-radius: 8px;
-        box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
-        background: linear-gradient(45deg, black, black);
+            background-color: #bbb;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, black, black);
         }
 
 
-                .flip-card-back {
-                background-color:black;
-        opacity: 0.91;
-        color: white;
-        transform: rotateY(180deg);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        border-radius: 8px;
-        box-shadow: 23px 23px 10px rgba(0, 0, 0, 0.3);
-    
-        }
-
-        .flip-card-back h1 {
-            font-size: 28px; 
-
-        }
-
-        .flip-card-back p {
-            font-size: 20px;
+        .flip-card-back {
+            background-color: black;
+            opacity: 0.91;
             color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 23px 23px 10px rgba(0, 0, 0, 0.3);
         }
+
+            .flip-card-back h1 {
+                font-size: 28px;
+            }
+
+            .flip-card-back p {
+                font-size: 20px;
+                color: white;
+            }
 
         .fragrance-card {
             width: 300px;
@@ -116,9 +111,9 @@
         }
 
         .fragrance-title {
-            margin-bottom: 50px; 
+            margin-bottom: 50px;
             margin-top: 3.5rem;
-            color:#141414
+            color: #141414
         }
 
         .add-to-cart-btn {
@@ -131,60 +126,60 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-                margin-bottom: 9px;
+            margin-bottom: 9px;
         }
 
         .fragrance-card-column {
-            margin-bottom: 50px; 
+            margin-bottom: 50px;
         }
-        
 
-                .fragrance-card {
+
+        .fragrance-card {
             margin-bottom: 45px;
         }
 
         .add-to-wishlist-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: none;
-        border: none;
-        color: #e74c3c; 
-        font-size: 24px;
-        cursor: pointer;
-        transition: color 0.3s;
-    }
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #e74c3c;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
 
-    .add-to-wishlist-btn:hover {
-        color: #c0392b; 
-    }
-
-     
-    .details-btn
-    .add-to-cart-btn {
-        
-        margin-top: 1.5rem;
-    }
-
-    .flip-card-back h1 {
-    font-size: 28px;
-    padding-top: 30px;
-}
-.flip-card-back h1, .flip-card-back p {
-    margin-bottom: 0.5rem;
-}
+            .add-to-wishlist-btn:hover {
+                color: #c0392b;
+            }
 
 
-    .flip-card-back h1
-    .flip-card-back p {
-        margin-top: 1.5rem;
-    }
+        .details-btn
+        .add-to-cart-btn {
+            margin-top: 1.5rem;
+        }
 
-    .bg-black {
-    background-color: black;
-    color: white;
-    border: none;
-    }
+        .flip-card-back h1 {
+            font-size: 28px;
+            padding-top: 30px;
+        }
+
+        .flip-card-back h1, .flip-card-back p {
+            margin-bottom: 0.5rem;
+        }
+
+
+            .flip-card-back h1
+            .flip-card-back p {
+                margin-top: 1.5rem;
+            }
+
+        .bg-black {
+            background-color: black;
+            color: white;
+            border: none;
+        }
 
 
         .col-md-3 .form-group {
@@ -193,17 +188,17 @@
             align-items: center;
         }
 
-        .col-md-3 .form-group input[type="submit"] {
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            margin-left: 52rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+            .col-md-3 .form-group input[type="submit"] {
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                margin-left: 52rem;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s, color 0.3s;
+            }
 
     </style>
 </head>
@@ -264,7 +259,7 @@
 
         <div class="col-md-3">
             <div class="form-group mt-4 p-2">
-                <input type="submit" value="Filter" class="btn btn-primary"/>
+                <input type="submit" value="Filter" class="btn btn-primary" />
             </div>
         </div>
     </form>
@@ -272,13 +267,13 @@
 
 
 
-@if (!Model.Fragrances.Any())
- {
-    <h2 class="text-center">No fragrances found by the given criteria!</h2>
- }
+    @if (!Model.Fragrances.Any())
+    {
+        <h2 class="text-center">No fragrances found by the given criteria!</h2>
+    }
 
 
-            <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row box-container mt-lg-5">
             @foreach (var fragrance in Model.Fragrances)
             {
@@ -308,22 +303,15 @@
                 </div>
             }
 
-                </div>
-            </div>
+        </div>
+    </div>
 
 
 
-    <script>
+     <script>
         document.addEventListener("DOMContentLoaded", async function () {
             const wishlistButtons = document.querySelectorAll(".add-to-wishlist-btn");
 
-            const isAuthenticated = @User.Identity.IsAuthenticated.ToString().ToLower();
-
-
-                    if (!isAuthenticated) {
-                        window.location.href = "/Identity/Account/Register";
-                        return;
-                    }
 
             wishlistButtons.forEach(button => {
                 button.addEventListener("click", async function () {
@@ -331,7 +319,7 @@
                     const fragranceId = button.getAttribute("data-fragrance-id");
                     const heartIcon = button.querySelector(".fas.fa-heart");
 
-               
+
                     heartIcon.classList.toggle("active");
 
                     try {
@@ -341,7 +329,7 @@
                                 "Content-Type": "application/json"
                             }
                         });
-                       
+
                         if (response.ok) {
 
                             toastr.success('The fragrance was successfully added.');
@@ -355,18 +343,18 @@
                 });
             });
 
-            
 
-                    toastr.options = {
-                        closeButton: true,
-                        preventDuplicates: true,
-                        positionClass: 'toast-bottom-right',
-                        showMethod: 'slideDown',
-                        timeOut: 4000
-                    };
+
+            toastr.options = {
+                closeButton: true,
+                preventDuplicates: true,
+                positionClass: 'toast-bottom-right',
+                showMethod: 'slideDown',
+                timeOut: 4000
+            };
         });
 
-        
-    </script>
+
+    </script> 
 </body>
 </html>

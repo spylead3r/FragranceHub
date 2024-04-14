@@ -36,8 +36,15 @@ namespace FragranceHub.Web
 
             builder.Services.AddApplicationServices(typeof(IFragranceService));
 
+            builder.Services.AddRecaptchaService();
+
+            builder.Services.AddMemoryCache();
+            builder.Services.AddResponseCaching();
+
+
             builder.Services.ConfigureApplicationCookie(cfg =>
             {
+                cfg.LoginPath = "/User/Login";
                 cfg.AccessDeniedPath = "/Home/Error/401";
             });
 

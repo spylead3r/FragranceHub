@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -21,16 +21,16 @@
     <style>
 
         .navbar {
-            background-color: black;        
+            background-color: black;
         }
 
- 
+
         .navbar-brand {
             color: white; /* Set the text color to white */
             line-height: 30px;
         }
 
-                  .logo-image {
+        .logo-image {
             max-height: 55px;
         }
 
@@ -41,33 +41,62 @@
 
 
         .navbar-nav .nav-link {
-            color: #ffffff; 
+            color: #ffffff;
             transition: color 0.3s;
         }
 
-        
-        .navbar-nav .nav-link:hover {
-            color: #f8f9fa;
-        }
+
+            .navbar-nav .nav-link:hover {
+                color: #f8f9fa;
+            }
 
         .dropdown-menu {
-            background-color: black; 
+            background-color: black;
             border: none;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        
+
         .dropdown-item {
-            color: white; 
+            color: white;
         }
 
-        
-        .dropdown-item:hover {
-            background-color: black; 
-            color: whitesmoke; 
+
+            .dropdown-item:hover {
+                background-color: black;
+                color: whitesmoke;
+            }
+
+        /* Additional styles for aligning the icons to the right */
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 20px; /* This will add space between the icons */
         }
-}
-        
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            color: white; /* Ensures icons and text are white */
+            margin-left: 20px; /* Adjust the space between the icons */
+            padding-right: 5px; /* Adds padding to the right of each link */
+        }
+
+        #_LoginPartial {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .nudge-left {
+            padding-left: 1px; 
+        }
+
+        #navbarSupportedContent {
+            padding-right: 5px;
+        }
+
     </style>
 
 </head>
@@ -78,13 +107,14 @@
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                 <img src="https://avatars.mds.yandex.net/i?id=a8a1da40804f75b1fc0710ee2cff5373-5231317-images-thumbs&n=13" alt="Logo" class="logo-image">
             </a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"> 
+                    <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Fragrance" asp-action="All">All Fragrances</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -97,20 +127,20 @@
                             <a class="dropdown-item" asp-area="" asp-controller="Category" asp-action="Unisex">Unisex</a>
                         </div>
                     </li>
-                    @if (User.Identity!.IsAuthenticated)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Wishlist" asp-action="Wishlist">My Wishlist</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Mine">My Cart</a>
-
-                        </li>
-                    }
-
                 </ul>
 
-                <partial name="_LoginPartial" class="navbar-nav ml-auto" />
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Wishlist" asp-action="Wishlist" title="Wislis">
+                        <i class="fas fa-heart"></i>
+                    </a>
+                </li>
+                <li class="nav-item nudge-left">
+                    <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Mine" title="MyCart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <partial name="_LoginPartial" />
             </div>
         </nav>
 
